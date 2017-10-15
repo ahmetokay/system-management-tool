@@ -1,0 +1,40 @@
+server:
+    port: 9292
+
+logging:
+  level:
+    org.springframework.jdbc: INFO
+    org.springframework.data: INFO
+    org.springframework.boot: INFO
+    org.springframework.transaction: INFO
+
+spring:
+  batch:
+    initializer:
+      enabled: false
+  datasource:
+    dataSourceClassName: org.apache.commons.dbcp.BasicDataSource
+    driverClassName: org.postgresql.Driver
+    url: jdbc:postgresql://localhost:5432/smt?currentSchema=public
+    username: postgres
+    password: root
+    testWhileIdle: true
+    testOnBorrow: true
+    validationQuery: SELECT 1
+    maxActive: 1
+  profiles:
+    active: app
+  output:
+    ansi:
+      enabled: ALWAYS
+  jpa:
+    showSql: true
+    generateDdl: false
+    properties:
+      hibernate:
+        enable_lazy_load_no_trans: true
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+    hibernate:
+      namingStrategy: org.hibernate.cfg.DefaultNamingStrategy
+      naming:
+        physicalStrategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
