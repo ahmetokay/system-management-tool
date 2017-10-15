@@ -1,139 +1,127 @@
 package com.smt.entity;
 
 import com.core.tr.entity.BaseEntity;
+
+import javax.persistence.*;
 import java.util.List;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.FetchType;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
-import javax.persistence.Table;
 
 @Entity
 @Table(name = "smt_request")
 public class SmtRequest extends BaseEntity {
 
-  @ManyToOne(fetch = FetchType.LAZY)
-  @JoinColumn(name = "fk_smt_project_id")
-  private SmtProject smtProject;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "fk_smt_project_id")
+    private SmtProject smtProject;
 
-  @OneToOne(fetch = FetchType.LAZY)
-  @JoinColumn(name = "fk_smt_request_type_id")
-  private SmtRequestType smtRequestType;
+    @OneToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "fk_smt_request_type_id")
+    private SmtRequestType smtRequestType;
 
-  @OneToMany(fetch = FetchType.LAZY, mappedBy = "smtRequest")
-  private List<SmtRequestHistory> smtRequestHistory;
+    @OneToOne(fetch = FetchType.LAZY, mappedBy = "smtRequest")
+    private SmtRequestRecovery smtRequestRecovery;
 
-  @OneToMany(fetch = FetchType.LAZY, mappedBy = "smtRequest")
-  private List<SmtRequestNotification> smtRequestNotification;
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "smtRequest")
+    private List<SmtRequestHistory> smtRequestHistoryList;
 
-  @Column(name = "url")
-  private String url;
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "smtRequest")
+    private List<SmtRequestNotification> smtRequestNotificationList;
 
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "smtRequest")
+    private List<SmtRequestHeader> smtRequestHeaderList;
 
-  @Column(name = "ip")
-  private String ip;
+    @Column(name = "url")
+    private String url;
 
+    @Column(name = "bodu")
+    private String body;
 
-  @Column(name = "username")
-  private String username;
+    @Column(name = "refresh_time")
+    private Integer refreshTime;
 
+    @Column(name = "try_count")
+    private Integer tryCount;
 
-  @Column(name = "password")
-  private String password;
+    public SmtRequest() {
 
+    }
 
-  @Column(name = "refresh_time")
-  private Integer refreshTime;
+    public SmtProject getSmtProject() {
+        return smtProject;
+    }
 
-  @Column(name = "try_count")
-  private Integer tryCount;
+    public void setSmtProject(SmtProject smtProject) {
+        this.smtProject = smtProject;
+    }
 
+    public SmtRequestType getSmtRequestType() {
+        return smtRequestType;
+    }
 
-  public SmtRequest() {
+    public void setSmtRequestType(SmtRequestType smtRequestType) {
+        this.smtRequestType = smtRequestType;
+    }
 
-  }
+    public SmtRequestRecovery getSmtRequestRecovery() {
+        return smtRequestRecovery;
+    }
 
-  public SmtProject getSmtProject() {
-    return smtProject;
-  }
+    public void setSmtRequestRecovery(SmtRequestRecovery smtRequestRecovery) {
+        this.smtRequestRecovery = smtRequestRecovery;
+    }
 
-  public void setSmtProject(SmtProject smtProject) {
-    this.smtProject = smtProject;
-  }
+    public List<SmtRequestHistory> getSmtRequestHistoryList() {
+        return smtRequestHistoryList;
+    }
 
-  public SmtRequestType getSmtRequestType() {
-    return smtRequestType;
-  }
+    public void setSmtRequestHistoryList(List<SmtRequestHistory> smtRequestHistoryList) {
+        this.smtRequestHistoryList = smtRequestHistoryList;
+    }
 
-  public void setSmtRequestType(SmtRequestType smtRequestType) {
-    this.smtRequestType = smtRequestType;
-  }
+    public List<SmtRequestNotification> getSmtRequestNotificationList() {
+        return smtRequestNotificationList;
+    }
 
-  public List<SmtRequestHistory> getSmtRequestHistory() {
-    return smtRequestHistory;
-  }
+    public void setSmtRequestNotificationList(List<SmtRequestNotification> smtRequestNotificationList) {
+        this.smtRequestNotificationList = smtRequestNotificationList;
+    }
 
-  public void setSmtRequestHistory(List<SmtRequestHistory> smtRequestHistory) {
-    this.smtRequestHistory = smtRequestHistory;
-  }
+    public List<SmtRequestHeader> getSmtRequestHeaderList() {
+        return smtRequestHeaderList;
+    }
 
-  public List<SmtRequestNotification> getSmtRequestNotification() {
-    return smtRequestNotification;
-  }
+    public void setSmtRequestHeaderList(List<SmtRequestHeader> smtRequestHeaderList) {
+        this.smtRequestHeaderList = smtRequestHeaderList;
+    }
 
-  public void setSmtRequestNotification(
-      List<SmtRequestNotification> smtRequestNotification) {
-    this.smtRequestNotification = smtRequestNotification;
-  }
+    public String getUrl() {
+        return url;
+    }
 
-  public String getUrl() {
-    return url;
-  }
+    public void setUrl(String url) {
+        this.url = url;
+    }
 
-  public void setUrl(String url) {
-    this.url = url;
-  }
+    public String getBody() {
+        return body;
+    }
 
-  public String getIp() {
-    return ip;
-  }
+    public void setBody(String body) {
+        this.body = body;
+    }
 
-  public void setIp(String ip) {
-    this.ip = ip;
-  }
+    public Integer getRefreshTime() {
+        return refreshTime;
+    }
 
-  public String getUsername() {
-    return username;
-  }
+    public void setRefreshTime(Integer refreshTime) {
+        this.refreshTime = refreshTime;
+    }
 
-  public void setUsername(String username) {
-    this.username = username;
-  }
+    public Integer getTryCount() {
+        return tryCount;
+    }
 
-  public String getPassword() {
-    return password;
-  }
-
-  public void setPassword(String password) {
-    this.password = password;
-  }
-
-  public Integer getRefreshTime() {
-    return refreshTime;
-  }
-
-  public void setRefreshTime(Integer refreshTime) {
-    this.refreshTime = refreshTime;
-  }
-
-  public Integer getTryCount() {
-    return tryCount;
-  }
-
-  public void setTryCount(Integer tryCount) {
-    this.tryCount = tryCount;
-  }
+    public void setTryCount(Integer tryCount) {
+        this.tryCount = tryCount;
+    }
 }

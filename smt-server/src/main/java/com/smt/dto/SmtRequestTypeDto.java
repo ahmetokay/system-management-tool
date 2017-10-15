@@ -3,15 +3,15 @@ package com.smt.dto;
 import com.core.tr.model.BaseDto;
 
 /**
- * @author bocal
+ * Created by ahmet on 15.10.2017.
  */
-public class SmtProjectDto extends BaseDto {
+public class SmtRequestTypeDto extends BaseDto {
 
     private String name;
 
     private String description;
 
-    public SmtProjectDto() {
+    public SmtRequestTypeDto() {
     }
 
     public String getName() {

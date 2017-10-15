@@ -10,8 +10,6 @@ import org.springframework.context.annotation.Configuration;
 /**
  * @author bocal
  */
-
-
 @Configuration
 @EnableAutoConfiguration
 @ComponentScan(basePackages = "com")

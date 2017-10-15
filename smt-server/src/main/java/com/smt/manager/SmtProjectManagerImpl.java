@@ -14,16 +14,16 @@ import org.springframework.transaction.annotation.Transactional;
 @Transactional(readOnly = true)
 public class SmtProjectManagerImpl implements SmtProjectManager {
 
-  private SmtProjectRepository projectRepository;
+    private SmtProjectRepository projectRepository;
 
-  @Autowired
-  public SmtProjectManagerImpl(SmtProjectRepository projectRepository) {
-    this.projectRepository = projectRepository;
-  }
+    @Autowired
+    public SmtProjectManagerImpl(SmtProjectRepository projectRepository) {
+        this.projectRepository = projectRepository;
+    }
 
-  @Override
-  @Transactional
-  public SmtProject create(SmtProject project) {
-    return projectRepository.save(project);
-  }
+    @Override
+    @Transactional
+    public SmtProject create(SmtProject project) {
+        return projectRepository.save(project);
+    }
 }

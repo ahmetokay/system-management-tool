@@ -13,20 +13,20 @@ import org.springframework.stereotype.Component;
 @Component
 public class SmtProjectServiceImpl implements SmtProjectService {
 
-  private SmtProjectConverter projectConverter;
+    private SmtProjectConverter projectConverter;
 
-  private SmtProjectManager projectManager;
+    private SmtProjectManager projectManager;
 
-  @Autowired
-  public SmtProjectServiceImpl(SmtProjectConverter projectConverter,
-      SmtProjectManager projectManager) {
-    this.projectConverter = projectConverter;
-    this.projectManager = projectManager;
-  }
+    @Autowired
+    public SmtProjectServiceImpl(SmtProjectConverter projectConverter,
+                                 SmtProjectManager projectManager) {
+        this.projectConverter = projectConverter;
+        this.projectManager = projectManager;
+    }
 
-  @Override
-  public SmtProjectDto create(SmtProjectDto project) {
-    SmtProject smtProject = projectManager.create(projectConverter.convertToEntity(project));
-    return projectConverter.convertToDto(smtProject);
-  }
+    @Override
+    public SmtProjectDto create(SmtProjectDto project) {
+        SmtProject smtProject = projectManager.create(projectConverter.convertToEntity(project));
+        return projectConverter.convertToDto(smtProject);
+    }
 }

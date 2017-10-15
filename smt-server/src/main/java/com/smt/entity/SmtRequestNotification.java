@@ -1,51 +1,58 @@
 package com.smt.entity;
 
 import com.core.tr.entity.BaseEntity;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.FetchType;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.Table;
+
+import javax.persistence.*;
 
 @Entity
 @Table(name = "smt_request_notification")
 public class SmtRequestNotification extends BaseEntity {
 
-  @ManyToOne(fetch = FetchType.LAZY)
-  @JoinColumn(name = "fk_smt_request_id")
-  private SmtRequest smtRequest;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "fk_smt_request_id")
+    private SmtRequest smtRequest;
 
-  @Column(name = "email")
-  private String email;
+    @Column(name = "email")
+    private String email;
 
-  @Column(name = "notification_type")
-  private String notificationType;
+    @Column(name = "sms")
+    private String sms;
 
-  public SmtRequestNotification() {
-  }
+    @Column(name = "restart")
+    private Boolean restart;
 
-  public SmtRequest getSmtRequest() {
-    return smtRequest;
-  }
+    public SmtRequestNotification() {
+    }
 
-  public void setSmtRequest(SmtRequest smtRequest) {
-    this.smtRequest = smtRequest;
-  }
+    public SmtRequest getSmtRequest() {
+        return smtRequest;
+    }
 
-  public String getEmail() {
-    return email;
-  }
+    public void setSmtRequest(SmtRequest smtRequest) {
+        this.smtRequest = smtRequest;
+    }
 
-  public void setEmail(String email) {
-    this.email = email;
-  }
+    public String getEmail() {
+        return email;
+    }
 
-  public String getNotificationType() {
-    return notificationType;
-  }
+    public void setEmail(String email) {
+        this.email = email;
+    }
 
-  public void setNotificationType(String notificationType) {
-    this.notificationType = notificationType;
-  }
+    public String getSms() {
+        return sms;
+    }
+
+    public void setSms(String sms) {
+        this.sms = sms;
+    }
+
+    public Boolean getRestart() {
+        return restart;
+    }
+
+    public void setRestart(Boolean restart) {
+        this.restart = restart;
+    }
 }
