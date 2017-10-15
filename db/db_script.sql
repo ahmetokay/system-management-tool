@@ -38,6 +38,7 @@ CREATE TABLE "smt_user_role" (
 	"pkid" serial NOT NULL,
 	"isactive" BOOLEAN NOT NULL,
 	"name" varchar(50) NOT NULL,
+	"description" varchar(100),
 	CONSTRAINT smt_user_role_pk PRIMARY KEY ("pkid")
 ) WITH (
   OIDS=FALSE
@@ -91,7 +92,7 @@ CREATE TABLE "smt_request_type" (
 	"pkid" serial NOT NULL,
 	"isactive" BOOLEAN NOT NULL,
 	"name" varchar(50) NOT NULL,
-	"description" varchar(100) NOT NULL,
+	"description" varchar(100),
 	CONSTRAINT smt_request_type_pk PRIMARY KEY ("pkid")
 ) WITH (
   OIDS=FALSE
@@ -117,9 +118,9 @@ CREATE TABLE "smt_request_notification" (
 	"pkid" serial NOT NULL,
 	"isactive" BOOLEAN NOT NULL,
 	"fk_smt_request_id" bigint NOT NULL,
-	"email" varchar(150) NOT NULL,
-	"sms" varchar(15) NOT NULL,
-	"restart" BOOLEAN NOT NULL,
+	"email" varchar(150),
+	"sms" varchar(15),
+	"restart" BOOLEAN,
 	CONSTRAINT smt_request_notification_pk PRIMARY KEY ("pkid")
 ) WITH (
   OIDS=FALSE
@@ -147,7 +148,7 @@ CREATE TABLE "smt_request_recovery" (
 	"ip" varchar(50) NOT NULL,
 	"username" varchar(50) NOT NULL,
 	"password" varchar(50) NOT NULL,
-	"run_script" varchar(50) NOT NULL,
+	"run_script" varchar(50),
 	CONSTRAINT smt_request_recovery_pk PRIMARY KEY ("pkid")
 ) WITH (
   OIDS=FALSE
