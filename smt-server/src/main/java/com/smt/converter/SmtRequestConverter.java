@@ -14,6 +14,8 @@ import java.util.List;
 @Component
 public class SmtRequestConverter extends BaseAbstractConverter<SmtRequestDto, SmtRequest> {
 
+    private SmtProjectConverter smtProjectConverter;
+
     private SmtRequestRecoveryConverter smtRequestRecoveryConverter;
 
     private SmtRequestHistoryConverter smtRequestHistoryConverter;
@@ -25,7 +27,17 @@ public class SmtRequestConverter extends BaseAbstractConverter<SmtRequestDto, Sm
     private SmtRequestTypeConverter smtRequestTypeConverter;
 
     @Autowired
-    public SmtRequestConverter() {
+    public SmtRequestConverter(SmtProjectConverter smtProjectConverter, SmtRequestRecoveryConverter smtRequestRecoveryConverter,
+                               SmtRequestHistoryConverter smtRequestHistoryConverter,
+                               SmtRequestNotificationConverter smtRequestNotificationConverter,
+                               SmtRequestHeaderConverter smtRequestHeaderConverter,
+                               SmtRequestTypeConverter smtRequestTypeConverter) {
+        this.smtProjectConverter = smtProjectConverter;
+        this.smtRequestRecoveryConverter = smtRequestRecoveryConverter;
+        this.smtRequestHistoryConverter = smtRequestHistoryConverter;
+        this.smtRequestNotificationConverter = smtRequestNotificationConverter;
+        this.smtRequestHeaderConverter = smtRequestHeaderConverter;
+        this.smtRequestTypeConverter = smtRequestTypeConverter;
     }
 
     @Override
@@ -34,6 +46,11 @@ public class SmtRequestConverter extends BaseAbstractConverter<SmtRequestDto, Sm
         dto.setBody(entity.getBody());
         dto.setRefreshTime(entity.getRefreshTime());
         dto.setTryCount(entity.getTryCount());
+
+        SmtProject smtProject = entity.getSmtProject();
+        if (smtProject != null) {
+            dto.setSmtProject(smtProjectConverter.convertToDto(smtProject));
+        }
 
         SmtRequestRecovery smtRequestRecovery = entity.getSmtRequestRecovery();
         if (smtRequestRecovery != null) {
@@ -67,6 +84,11 @@ public class SmtRequestConverter extends BaseAbstractConverter<SmtRequestDto, Sm
         entity.setBody(dto.getBody());
         entity.setRefreshTime(dto.getRefreshTime());
         entity.setTryCount(dto.getTryCount());
+
+        SmtProjectDto smtProject = dto.getSmtProject();
+        if (smtProject != null) {
+            entity.setSmtProject(smtProjectConverter.convertToEntity(smtProject));
+        }
 
         SmtRequestRecoveryDto smtRequestRecoveryDto = dto.getSmtRequestRecovery();
         if (smtRequestRecoveryDto != null) {

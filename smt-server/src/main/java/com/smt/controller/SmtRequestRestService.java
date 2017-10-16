@@ -1,7 +1,7 @@
 package com.smt.controller;
 
-import com.smt.dto.SmtProjectDto;
-import com.smt.service.SmtProjectService;
+import com.smt.dto.SmtRequestDto;
+import com.smt.service.SmtRequestService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -10,22 +10,19 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-/**
- * @author bocal
- */
 @RestController
-@RequestMapping(value = "/smt_project")
-public class SmtProjectRestService {
+@RequestMapping(value = "/smt_request")
+public class SmtRequestRestService {
 
-    private SmtProjectService projectService;
+    private SmtRequestService requestService;
 
     @Autowired
-    public SmtProjectRestService(SmtProjectService projectService) {
-        this.projectService = projectService;
+    public SmtRequestRestService(SmtRequestService requestService) {
+        this.requestService = requestService;
     }
 
     @RequestMapping(value = "/create", method = RequestMethod.POST)
-    public ResponseEntity<SmtProjectDto> create(@RequestBody SmtProjectDto projectDto) {
-        return new ResponseEntity<SmtProjectDto>(projectService.create(projectDto), HttpStatus.OK);
+    public ResponseEntity<SmtRequestDto> create(@RequestBody SmtRequestDto requestDto) {
+        return new ResponseEntity<SmtRequestDto>(requestService.create(requestDto), HttpStatus.OK);
     }
 }

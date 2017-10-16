@@ -9,7 +9,6 @@ import org.springframework.transaction.annotation.Transactional;
 /**
  * @author bocal
  */
-
 @Component
 @Transactional(readOnly = true)
 public class SmtProjectManagerImpl implements SmtProjectManager {

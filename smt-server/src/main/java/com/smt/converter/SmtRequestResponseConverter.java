@@ -13,11 +13,11 @@ public class SmtRequestResponseConverter extends BaseAbstractConverter<SmtReques
 
     @Override
     protected void doConvertToDto(SmtRequestResponseDto dto, SmtRequestResponse entity) {
-        dto.setStatus(entity.getStatus());
+        dto.setCode(entity.getCode());
     }
 
     @Override
     protected void doConvertToEntity(SmtRequestResponse entity, SmtRequestResponseDto dto) {
-        entity.setStatus(dto.getStatus());
+        entity.setCode(dto.getCode());
     }
 }

@@ -159,7 +159,7 @@ CREATE TABLE "smt_request_recovery" (
 CREATE TABLE "smt_request_response" (
 	"pkid" serial NOT NULL,
 	"isactive" BOOLEAN NOT NULL,
-	"status" varchar(10) NOT NULL,
+	"code" varchar(10) NOT NULL,
 	CONSTRAINT smt_request_response_pk PRIMARY KEY ("pkid")
 ) WITH (
   OIDS=FALSE

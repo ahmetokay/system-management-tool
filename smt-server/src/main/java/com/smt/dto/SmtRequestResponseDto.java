@@ -7,16 +7,16 @@ import com.core.tr.model.BaseDto;
  */
 public class SmtRequestResponseDto extends BaseDto {
 
-    private String status;
+    private String code;
 
     public SmtRequestResponseDto() {
     }
 
-    public String getStatus() {
-        return status;
+    public String getCode() {
+        return code;
     }
 
-    public void setStatus(String status) {
-        this.status = status;
+    public void setCode(String code) {
+        this.code = code;
     }
 }

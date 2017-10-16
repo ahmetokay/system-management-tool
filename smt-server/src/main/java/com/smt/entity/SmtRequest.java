@@ -32,7 +32,7 @@ public class SmtRequest extends BaseEntity {
     @Column(name = "url")
     private String url;
 
-    @Column(name = "bodu")
+    @Column(name = "body")
     private String body;
 
     @Column(name = "refresh_time")

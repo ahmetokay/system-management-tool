@@ -9,6 +9,8 @@ import java.util.List;
  */
 public class SmtRequestDto extends BaseDto {
 
+    private SmtProjectDto smtProject;
+
     private SmtRequestTypeDto smtRequestType;
 
     private SmtRequestRecoveryDto smtRequestRecovery;
@@ -29,6 +31,14 @@ public class SmtRequestDto extends BaseDto {
 
     public SmtRequestDto() {
 
+    }
+
+    public SmtProjectDto getSmtProject() {
+        return smtProject;
+    }
+
+    public void setSmtProject(SmtProjectDto smtProject) {
+        this.smtProject = smtProject;
     }
 
     public SmtRequestTypeDto getSmtRequestType() {
