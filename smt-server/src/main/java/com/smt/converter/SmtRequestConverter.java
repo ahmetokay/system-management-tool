@@ -4,6 +4,9 @@ import com.core.tr.converter.BaseAbstractConverter;
 import com.smt.dto.*;
 import com.smt.entity.*;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Lazy;
+import org.springframework.context.annotation.Scope;
+import org.springframework.context.annotation.ScopedProxyMode;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
@@ -12,6 +15,7 @@ import java.util.List;
  * @author bocal
  */
 @Component
+@Scope(value = "prototype", proxyMode = ScopedProxyMode.TARGET_CLASS)
 public class SmtRequestConverter extends BaseAbstractConverter<SmtRequestDto, SmtRequest> {
 
     private SmtProjectConverter smtProjectConverter;
