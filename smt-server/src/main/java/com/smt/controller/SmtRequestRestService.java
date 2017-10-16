@@ -14,15 +14,15 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping(value = "/smt_request")
 public class SmtRequestRestService {
 
-    private SmtRequestService requestService;
+  private SmtRequestService requestService;
 
-    @Autowired
-    public SmtRequestRestService(SmtRequestService requestService) {
-        this.requestService = requestService;
-    }
+  @Autowired
+  public SmtRequestRestService(SmtRequestService requestService) {
+    this.requestService = requestService;
+  }
 
-    @RequestMapping(value = "/create", method = RequestMethod.POST)
-    public ResponseEntity<SmtRequestDto> create(@RequestBody SmtRequestDto requestDto) {
-        return new ResponseEntity<SmtRequestDto>(requestService.create(requestDto), HttpStatus.OK);
-    }
+  @RequestMapping(value = "/create", method = RequestMethod.POST)
+  public ResponseEntity<SmtRequestDto> create(@RequestBody SmtRequestDto requestDto) {
+    return new ResponseEntity<SmtRequestDto>(requestService.create(requestDto), HttpStatus.OK);
+  }
 }

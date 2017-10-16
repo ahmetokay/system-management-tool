@@ -10,16 +10,16 @@ import org.springframework.transaction.annotation.Transactional;
 @Transactional(readOnly = true)
 public class SmtRequestManagerImpl implements SmtRequestManager {
 
-    private SmtRequestRepository smtRequestRepository;
+  private SmtRequestRepository smtRequestRepository;
 
-    @Autowired
-    public SmtRequestManagerImpl(SmtRequestRepository smtRequestRepository) {
-        this.smtRequestRepository = smtRequestRepository;
-    }
+  @Autowired
+  public SmtRequestManagerImpl(SmtRequestRepository smtRequestRepository) {
+    this.smtRequestRepository = smtRequestRepository;
+  }
 
-    @Override
-    @Transactional
-    public SmtRequest create(SmtRequest request) {
-        return smtRequestRepository.save(request);
-    }
+  @Override
+  @Transactional
+  public SmtRequest create(SmtRequest request) {
+    return smtRequestRepository.save(request);
+  }
 }

@@ -4,5 +4,5 @@ import com.smt.dto.SmtRequestDto;
 
 public interface SmtRequestService {
 
-    SmtRequestDto create(SmtRequestDto requestDto);
+  SmtRequestDto create(SmtRequestDto requestDto);
 }

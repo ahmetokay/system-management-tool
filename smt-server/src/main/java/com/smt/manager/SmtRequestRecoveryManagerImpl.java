@@ -10,16 +10,16 @@ import org.springframework.transaction.annotation.Transactional;
 @Transactional(readOnly = true)
 public class SmtRequestRecoveryManagerImpl implements SmtRequestRecoveryManager {
 
-    private SmtRequestRecoveryRepository requestRecoveryRepository;
+  private SmtRequestRecoveryRepository requestRecoveryRepository;
 
-    @Autowired
-    public SmtRequestRecoveryManagerImpl(SmtRequestRecoveryRepository requestRecoveryRepository) {
-        this.requestRecoveryRepository = requestRecoveryRepository;
-    }
+  @Autowired
+  public SmtRequestRecoveryManagerImpl(SmtRequestRecoveryRepository requestRecoveryRepository) {
+    this.requestRecoveryRepository = requestRecoveryRepository;
+  }
 
-    @Override
-    @Transactional
-    public SmtRequestRecovery create(SmtRequestRecovery requestRecovery) {
-        return requestRecoveryRepository.save(requestRecovery);
-    }
+  @Override
+  @Transactional
+  public SmtRequestRecovery create(SmtRequestRecovery requestRecovery) {
+    return requestRecoveryRepository.save(requestRecovery);
+  }
 }

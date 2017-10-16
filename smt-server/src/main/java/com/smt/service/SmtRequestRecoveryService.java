@@ -4,5 +4,5 @@ import com.smt.dto.SmtRequestRecoveryDto;
 
 public interface SmtRequestRecoveryService {
 
-    SmtRequestRecoveryDto create(SmtRequestRecoveryDto requestRecoveryDto);
+  SmtRequestRecoveryDto create(SmtRequestRecoveryDto requestRecoveryDto);
 }

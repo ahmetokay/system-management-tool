@@ -10,20 +10,22 @@ import org.springframework.stereotype.Component;
 @Component
 public class SmtRequestNotificationServiceImpl implements SmtRequestNotificationService {
 
-    private SmtRequestNotificationConverter requestNotificationConverter;
+  private SmtRequestNotificationConverter requestNotificationConverter;
 
-    private SmtRequestNotificationManager requestNotificationManager;
+  private SmtRequestNotificationManager requestNotificationManager;
 
-    @Autowired
-    public SmtRequestNotificationServiceImpl(SmtRequestNotificationConverter requestNotificationConverter,
-                                             SmtRequestNotificationManager requestNotificationManager) {
-        this.requestNotificationConverter = requestNotificationConverter;
-        this.requestNotificationManager = requestNotificationManager;
-    }
+  @Autowired
+  public SmtRequestNotificationServiceImpl(
+      SmtRequestNotificationConverter requestNotificationConverter,
+      SmtRequestNotificationManager requestNotificationManager) {
+    this.requestNotificationConverter = requestNotificationConverter;
+    this.requestNotificationManager = requestNotificationManager;
+  }
 
-    @Override
-    public SmtRequestNotificationDto create(SmtRequestNotificationDto requestNotificationDto) {
-        SmtRequestNotification smtRequestNotification = requestNotificationManager.create(requestNotificationConverter.convertToEntity(requestNotificationDto));
-        return requestNotificationConverter.convertToDto(smtRequestNotification);
-    }
+  @Override
+  public SmtRequestNotificationDto create(SmtRequestNotificationDto requestNotificationDto) {
+    SmtRequestNotification smtRequestNotification = requestNotificationManager
+        .create(requestNotificationConverter.convertToEntity(requestNotificationDto));
+    return requestNotificationConverter.convertToDto(smtRequestNotification);
+  }
 }

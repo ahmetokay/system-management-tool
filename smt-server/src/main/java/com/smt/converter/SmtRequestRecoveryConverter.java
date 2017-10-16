@@ -15,38 +15,39 @@ import org.springframework.stereotype.Component;
  */
 @Component
 @Scope(value = "prototype", proxyMode = ScopedProxyMode.TARGET_CLASS)
-public class SmtRequestRecoveryConverter extends BaseAbstractConverter<SmtRequestRecoveryDto, SmtRequestRecovery> {
+public class SmtRequestRecoveryConverter extends
+    BaseAbstractConverter<SmtRequestRecoveryDto, SmtRequestRecovery> {
 
-    private SmtRequestConverter smtRequestConverter;
+  private SmtRequestConverter smtRequestConverter;
 
-    @Autowired
-    public SmtRequestRecoveryConverter(SmtRequestConverter smtRequestConverter) {
-        this.smtRequestConverter = smtRequestConverter;
+  @Autowired
+  public SmtRequestRecoveryConverter(SmtRequestConverter smtRequestConverter) {
+    this.smtRequestConverter = smtRequestConverter;
+  }
+
+  @Override
+  protected void doConvertToDto(SmtRequestRecoveryDto dto, SmtRequestRecovery entity) {
+    dto.setIp(entity.getIp());
+    dto.setUsername(entity.getUsername());
+    dto.setPassword(entity.getPassword());
+    dto.setRunScript(entity.getRunScript());
+
+    SmtRequest smtRequest = entity.getSmtRequest();
+    if (smtRequest != null) {
+      dto.setSmtRequest(smtRequestConverter.convertToDto(smtRequest));
     }
+  }
 
-    @Override
-    protected void doConvertToDto(SmtRequestRecoveryDto dto, SmtRequestRecovery entity) {
-        dto.setIp(entity.getIp());
-        dto.setUsername(entity.getUsername());
-        dto.setPassword(entity.getPassword());
-        dto.setRunScript(entity.getRunScript());
+  @Override
+  protected void doConvertToEntity(SmtRequestRecovery entity, SmtRequestRecoveryDto dto) {
+    entity.setIp(dto.getIp());
+    entity.setUsername(dto.getUsername());
+    entity.setPassword(dto.getPassword());
+    entity.setRunScript(dto.getRunScript());
 
-        SmtRequest smtRequest = entity.getSmtRequest();
-        if (smtRequest != null) {
-            dto.setSmtRequest(smtRequestConverter.convertToDto(smtRequest));
-        }
+    SmtRequestDto smtRequest = dto.getSmtRequest();
+    if (smtRequest != null) {
+      entity.setSmtRequest(smtRequestConverter.convertToEntity(smtRequest));
     }
-
-    @Override
-    protected void doConvertToEntity(SmtRequestRecovery entity, SmtRequestRecoveryDto dto) {
-        entity.setIp(dto.getIp());
-        entity.setUsername(dto.getUsername());
-        entity.setPassword(dto.getPassword());
-        entity.setRunScript(dto.getRunScript());
-
-        SmtRequestDto smtRequest = dto.getSmtRequest();
-        if (smtRequest != null) {
-            entity.setSmtRequest(smtRequestConverter.convertToEntity(smtRequest));
-        }
-    }
+  }
 }

@@ -10,16 +10,16 @@ import org.springframework.transaction.annotation.Transactional;
 @Transactional(readOnly = true)
 public class SmtRequestHistoryManagerImpl implements SmtRequestHistoryManager {
 
-    private SmtRequestHistoryRepository requestHistoryRepository;
+  private SmtRequestHistoryRepository requestHistoryRepository;
 
-    @Autowired
-    public SmtRequestHistoryManagerImpl(SmtRequestHistoryRepository requestHistoryRepository) {
-        this.requestHistoryRepository = requestHistoryRepository;
-    }
+  @Autowired
+  public SmtRequestHistoryManagerImpl(SmtRequestHistoryRepository requestHistoryRepository) {
+    this.requestHistoryRepository = requestHistoryRepository;
+  }
 
-    @Override
-    @Transactional
-    public SmtRequestHistory create(SmtRequestHistory requestHistory) {
-        return requestHistoryRepository.save(requestHistory);
-    }
+  @Override
+  @Transactional
+  public SmtRequestHistory create(SmtRequestHistory requestHistory) {
+    return requestHistoryRepository.save(requestHistory);
+  }
 }

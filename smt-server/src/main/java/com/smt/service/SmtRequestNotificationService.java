@@ -4,5 +4,5 @@ import com.smt.dto.SmtRequestNotificationDto;
 
 public interface SmtRequestNotificationService {
 
-    SmtRequestNotificationDto create(SmtRequestNotificationDto requestNotificationDto);
+  SmtRequestNotificationDto create(SmtRequestNotificationDto requestNotificationDto);
 }

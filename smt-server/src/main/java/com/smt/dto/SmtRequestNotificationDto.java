@@ -7,46 +7,46 @@ import com.core.tr.model.BaseDto;
  */
 public class SmtRequestNotificationDto extends BaseDto {
 
-    private SmtRequestDto smtRequest;
+  private SmtRequestDto smtRequest;
 
-    private String email;
+  private String email;
 
-    private String sms;
+  private String sms;
 
-    private Boolean restart;
+  private Boolean restart;
 
-    public SmtRequestNotificationDto() {
-    }
+  public SmtRequestNotificationDto() {
+  }
 
-    public SmtRequestDto getSmtRequest() {
-        return smtRequest;
-    }
+  public SmtRequestDto getSmtRequest() {
+    return smtRequest;
+  }
 
-    public void setSmtRequest(SmtRequestDto smtRequest) {
-        this.smtRequest = smtRequest;
-    }
+  public void setSmtRequest(SmtRequestDto smtRequest) {
+    this.smtRequest = smtRequest;
+  }
 
-    public String getEmail() {
-        return email;
-    }
+  public String getEmail() {
+    return email;
+  }
 
-    public void setEmail(String email) {
-        this.email = email;
-    }
+  public void setEmail(String email) {
+    this.email = email;
+  }
 
-    public String getSms() {
-        return sms;
-    }
+  public String getSms() {
+    return sms;
+  }
 
-    public void setSms(String sms) {
-        this.sms = sms;
-    }
+  public void setSms(String sms) {
+    this.sms = sms;
+  }
 
-    public Boolean getRestart() {
-        return restart;
-    }
+  public Boolean getRestart() {
+    return restart;
+  }
 
-    public void setRestart(Boolean restart) {
-        this.restart = restart;
-    }
+  public void setRestart(Boolean restart) {
+    this.restart = restart;
+  }
 }

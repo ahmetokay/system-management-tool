@@ -10,20 +10,21 @@ import org.springframework.stereotype.Component;
 @Component
 public class SmtRequestRecoveryServiceImpl implements SmtRequestRecoveryService {
 
-    private SmtRequestRecoveryConverter requestRecoveryConverter;
+  private SmtRequestRecoveryConverter requestRecoveryConverter;
 
-    private SmtRequestRecoveryManager requestRecoveryManager;
+  private SmtRequestRecoveryManager requestRecoveryManager;
 
-    @Autowired
-    public SmtRequestRecoveryServiceImpl(SmtRequestRecoveryConverter requestRecoveryConverter,
-                                         SmtRequestRecoveryManager requestRecoveryManager) {
-        this.requestRecoveryConverter = requestRecoveryConverter;
-        this.requestRecoveryManager = requestRecoveryManager;
-    }
+  @Autowired
+  public SmtRequestRecoveryServiceImpl(SmtRequestRecoveryConverter requestRecoveryConverter,
+      SmtRequestRecoveryManager requestRecoveryManager) {
+    this.requestRecoveryConverter = requestRecoveryConverter;
+    this.requestRecoveryManager = requestRecoveryManager;
+  }
 
-    @Override
-    public SmtRequestRecoveryDto create(SmtRequestRecoveryDto requestRecoveryDto) {
-        SmtRequestRecovery smtRequestRecovery = requestRecoveryManager.create(requestRecoveryConverter.convertToEntity(requestRecoveryDto));
-        return requestRecoveryConverter.convertToDto(smtRequestRecovery);
-    }
+  @Override
+  public SmtRequestRecoveryDto create(SmtRequestRecoveryDto requestRecoveryDto) {
+    SmtRequestRecovery smtRequestRecovery = requestRecoveryManager
+        .create(requestRecoveryConverter.convertToEntity(requestRecoveryDto));
+    return requestRecoveryConverter.convertToDto(smtRequestRecovery);
+  }
 }

@@ -10,16 +10,16 @@ import org.springframework.transaction.annotation.Transactional;
 @Transactional(readOnly = true)
 public class SmtRequestHeaderManagerImpl implements SmtRequestHeaderManager {
 
-    private SmtRequestHeaderRepository requestHeaderRepository;
+  private SmtRequestHeaderRepository requestHeaderRepository;
 
-    @Autowired
-    public SmtRequestHeaderManagerImpl(SmtRequestHeaderRepository requestHeaderRepository) {
-        this.requestHeaderRepository = requestHeaderRepository;
-    }
+  @Autowired
+  public SmtRequestHeaderManagerImpl(SmtRequestHeaderRepository requestHeaderRepository) {
+    this.requestHeaderRepository = requestHeaderRepository;
+  }
 
-    @Override
-    @Transactional
-    public SmtRequestHeader create(SmtRequestHeader requestHeader) {
-        return requestHeaderRepository.save(requestHeader);
-    }
+  @Override
+  @Transactional
+  public SmtRequestHeader create(SmtRequestHeader requestHeader) {
+    return requestHeaderRepository.save(requestHeader);
+  }
 }

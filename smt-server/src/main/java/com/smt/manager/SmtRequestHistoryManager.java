@@ -4,5 +4,5 @@ import com.smt.entity.SmtRequestHistory;
 
 public interface SmtRequestHistoryManager {
 
-    SmtRequestHistory create(SmtRequestHistory requestHistory);
+  SmtRequestHistory create(SmtRequestHistory requestHistory);
 }

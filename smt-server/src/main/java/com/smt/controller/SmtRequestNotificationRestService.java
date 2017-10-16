@@ -14,15 +14,18 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping(value = "/smt_request_notification")
 public class SmtRequestNotificationRestService {
 
-    private SmtRequestNotificationService requestNotificationService;
+  private SmtRequestNotificationService requestNotificationService;
 
-    @Autowired
-    public SmtRequestNotificationRestService(SmtRequestNotificationService requestNotificationService) {
-        this.requestNotificationService = requestNotificationService;
-    }
+  @Autowired
+  public SmtRequestNotificationRestService(
+      SmtRequestNotificationService requestNotificationService) {
+    this.requestNotificationService = requestNotificationService;
+  }
 
-    @RequestMapping(value = "/create", method = RequestMethod.POST)
-    public ResponseEntity<SmtRequestNotificationDto> create(@RequestBody SmtRequestNotificationDto requestNotificationDto) {
-        return new ResponseEntity<SmtRequestNotificationDto>(requestNotificationService.create(requestNotificationDto), HttpStatus.OK);
-    }
+  @RequestMapping(value = "/create", method = RequestMethod.POST)
+  public ResponseEntity<SmtRequestNotificationDto> create(
+      @RequestBody SmtRequestNotificationDto requestNotificationDto) {
+    return new ResponseEntity<SmtRequestNotificationDto>(
+        requestNotificationService.create(requestNotificationDto), HttpStatus.OK);
+  }
 }

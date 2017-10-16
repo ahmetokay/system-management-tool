@@ -13,17 +13,17 @@ import javax.persistence.Table;
 @Table(name = "smt_request_response")
 public class SmtRequestResponse extends BaseEntity {
 
-    @Column(name = "code")
-    private String code;
+  @Column(name = "code")
+  private String code;
 
-    public SmtRequestResponse() {
-    }
+  public SmtRequestResponse() {
+  }
 
-    public String getCode() {
-        return code;
-    }
+  public String getCode() {
+    return code;
+  }
 
-    public void setCode(String code) {
-        this.code = code;
-    }
+  public void setCode(String code) {
+    this.code = code;
+  }
 }

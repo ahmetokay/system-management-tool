@@ -4,5 +4,5 @@ import com.smt.dto.SmtRequestHistoryDto;
 
 public interface SmtRequestHistoryService {
 
-    SmtRequestHistoryDto create(SmtRequestHistoryDto requestHistoryDto);
+  SmtRequestHistoryDto create(SmtRequestHistoryDto requestHistoryDto);
 }

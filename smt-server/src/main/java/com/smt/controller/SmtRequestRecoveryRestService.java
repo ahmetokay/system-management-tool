@@ -14,15 +14,17 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping(value = "/smt_request_recovery")
 public class SmtRequestRecoveryRestService {
 
-    private SmtRequestRecoveryService requestRecoveryService;
+  private SmtRequestRecoveryService requestRecoveryService;
 
-    @Autowired
-    public SmtRequestRecoveryRestService(SmtRequestRecoveryService requestRecoveryService) {
-        this.requestRecoveryService = requestRecoveryService;
-    }
+  @Autowired
+  public SmtRequestRecoveryRestService(SmtRequestRecoveryService requestRecoveryService) {
+    this.requestRecoveryService = requestRecoveryService;
+  }
 
-    @RequestMapping(value = "/create", method = RequestMethod.POST)
-    public ResponseEntity<SmtRequestRecoveryDto> create(@RequestBody SmtRequestRecoveryDto requestRecoveryDto) {
-        return new ResponseEntity<SmtRequestRecoveryDto>(requestRecoveryService.create(requestRecoveryDto), HttpStatus.OK);
-    }
+  @RequestMapping(value = "/create", method = RequestMethod.POST)
+  public ResponseEntity<SmtRequestRecoveryDto> create(
+      @RequestBody SmtRequestRecoveryDto requestRecoveryDto) {
+    return new ResponseEntity<SmtRequestRecoveryDto>(
+        requestRecoveryService.create(requestRecoveryDto), HttpStatus.OK);
+  }
 }

@@ -10,20 +10,21 @@ import org.springframework.stereotype.Component;
 @Component
 public class SmtRequestHeaderServiceImpl implements SmtRequestHeaderService {
 
-    private SmtRequestHeaderConverter requestHeaderConverter;
+  private SmtRequestHeaderConverter requestHeaderConverter;
 
-    private SmtRequestHeaderManager requestHeaderManager;
+  private SmtRequestHeaderManager requestHeaderManager;
 
-    @Autowired
-    public SmtRequestHeaderServiceImpl(SmtRequestHeaderConverter requestHeaderConverter,
-                                       SmtRequestHeaderManager requestHeaderManager) {
-        this.requestHeaderConverter = requestHeaderConverter;
-        this.requestHeaderManager = requestHeaderManager;
-    }
+  @Autowired
+  public SmtRequestHeaderServiceImpl(SmtRequestHeaderConverter requestHeaderConverter,
+      SmtRequestHeaderManager requestHeaderManager) {
+    this.requestHeaderConverter = requestHeaderConverter;
+    this.requestHeaderManager = requestHeaderManager;
+  }
 
-    @Override
-    public SmtRequestHeaderDto create(SmtRequestHeaderDto requestHeaderDto) {
-        SmtRequestHeader smtRequestHeader = requestHeaderManager.create(requestHeaderConverter.convertToEntity(requestHeaderDto));
-        return requestHeaderConverter.convertToDto(smtRequestHeader);
-    }
+  @Override
+  public SmtRequestHeaderDto create(SmtRequestHeaderDto requestHeaderDto) {
+    SmtRequestHeader smtRequestHeader = requestHeaderManager
+        .create(requestHeaderConverter.convertToEntity(requestHeaderDto));
+    return requestHeaderConverter.convertToDto(smtRequestHeader);
+  }
 }

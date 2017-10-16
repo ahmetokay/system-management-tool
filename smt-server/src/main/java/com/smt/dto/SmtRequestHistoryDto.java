@@ -9,46 +9,46 @@ import java.sql.Timestamp;
  */
 public class SmtRequestHistoryDto extends BaseDto {
 
-    private SmtRequestDto smtRequest;
+  private SmtRequestDto smtRequest;
 
-    private Timestamp name;
+  private Timestamp name;
 
-    private String status;
+  private String status;
 
-    private String statusMessage;
+  private String statusMessage;
 
-    public SmtRequestHistoryDto() {
-    }
+  public SmtRequestHistoryDto() {
+  }
 
-    public SmtRequestDto getSmtRequest() {
-        return smtRequest;
-    }
+  public SmtRequestDto getSmtRequest() {
+    return smtRequest;
+  }
 
-    public void setSmtRequest(SmtRequestDto smtRequest) {
-        this.smtRequest = smtRequest;
-    }
+  public void setSmtRequest(SmtRequestDto smtRequest) {
+    this.smtRequest = smtRequest;
+  }
 
-    public Timestamp getName() {
-        return name;
-    }
+  public Timestamp getName() {
+    return name;
+  }
 
-    public void setName(Timestamp name) {
-        this.name = name;
-    }
+  public void setName(Timestamp name) {
+    this.name = name;
+  }
 
-    public String getStatus() {
-        return status;
-    }
+  public String getStatus() {
+    return status;
+  }
 
-    public void setStatus(String status) {
-        this.status = status;
-    }
+  public void setStatus(String status) {
+    this.status = status;
+  }
 
-    public String getStatusMessage() {
-        return statusMessage;
-    }
+  public String getStatusMessage() {
+    return statusMessage;
+  }
 
-    public void setStatusMessage(String statusMessage) {
-        this.statusMessage = statusMessage;
-    }
+  public void setStatusMessage(String statusMessage) {
+    this.statusMessage = statusMessage;
+  }
 }

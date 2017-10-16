@@ -8,6 +8,7 @@ import org.springframework.stereotype.Repository;
  * Created by bocal on 8/8/17.
  */
 @Repository
-public interface SmtRequestNotificationRepository extends EntityJpaRepository<SmtRequestNotification> {
+public interface SmtRequestNotificationRepository extends
+    EntityJpaRepository<SmtRequestNotification> {
 
 }

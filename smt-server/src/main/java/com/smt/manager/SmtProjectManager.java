@@ -7,5 +7,5 @@ import com.smt.entity.SmtProject;
  */
 public interface SmtProjectManager {
 
-    SmtProject create(SmtProject project);
+  SmtProject create(SmtProject project);
 }

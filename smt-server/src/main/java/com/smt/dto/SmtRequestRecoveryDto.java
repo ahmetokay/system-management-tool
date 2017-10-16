@@ -7,56 +7,56 @@ import com.core.tr.model.BaseDto;
  */
 public class SmtRequestRecoveryDto extends BaseDto {
 
-    private SmtRequestDto smtRequest;
+  private SmtRequestDto smtRequest;
 
-    private String ip;
+  private String ip;
 
-    private String username;
+  private String username;
 
-    private String password;
+  private String password;
 
-    private String runScript;
+  private String runScript;
 
-    public SmtRequestRecoveryDto() {
-    }
+  public SmtRequestRecoveryDto() {
+  }
 
-    public SmtRequestDto getSmtRequest() {
-        return smtRequest;
-    }
+  public SmtRequestDto getSmtRequest() {
+    return smtRequest;
+  }
 
-    public void setSmtRequest(SmtRequestDto smtRequest) {
-        this.smtRequest = smtRequest;
-    }
+  public void setSmtRequest(SmtRequestDto smtRequest) {
+    this.smtRequest = smtRequest;
+  }
 
-    public String getIp() {
-        return ip;
-    }
+  public String getIp() {
+    return ip;
+  }
 
-    public void setIp(String ip) {
-        this.ip = ip;
-    }
+  public void setIp(String ip) {
+    this.ip = ip;
+  }
 
-    public String getUsername() {
-        return username;
-    }
+  public String getUsername() {
+    return username;
+  }
 
-    public void setUsername(String username) {
-        this.username = username;
-    }
+  public void setUsername(String username) {
+    this.username = username;
+  }
 
-    public String getPassword() {
-        return password;
-    }
+  public String getPassword() {
+    return password;
+  }
 
-    public void setPassword(String password) {
-        this.password = password;
-    }
+  public void setPassword(String password) {
+    this.password = password;
+  }
 
-    public String getRunScript() {
-        return runScript;
-    }
+  public String getRunScript() {
+    return runScript;
+  }
 
-    public void setRunScript(String runScript) {
-        this.runScript = runScript;
-    }
+  public void setRunScript(String runScript) {
+    this.runScript = runScript;
+  }
 }

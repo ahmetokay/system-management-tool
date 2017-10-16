@@ -7,36 +7,36 @@ import com.core.tr.model.BaseDto;
  */
 public class SmtRequestHeaderDto extends BaseDto {
 
-    private SmtRequestDto smtRequest;
+  private SmtRequestDto smtRequest;
 
-    private String key;
+  private String key;
 
-    private String value;
+  private String value;
 
-    public SmtRequestHeaderDto() {
-    }
+  public SmtRequestHeaderDto() {
+  }
 
-    public SmtRequestDto getSmtRequest() {
-        return smtRequest;
-    }
+  public SmtRequestDto getSmtRequest() {
+    return smtRequest;
+  }
 
-    public void setSmtRequest(SmtRequestDto smtRequest) {
-        this.smtRequest = smtRequest;
-    }
+  public void setSmtRequest(SmtRequestDto smtRequest) {
+    this.smtRequest = smtRequest;
+  }
 
-    public String getKey() {
-        return key;
-    }
+  public String getKey() {
+    return key;
+  }
 
-    public void setKey(String key) {
-        this.key = key;
-    }
+  public void setKey(String key) {
+    this.key = key;
+  }
 
-    public String getValue() {
-        return value;
-    }
+  public String getValue() {
+    return value;
+  }
 
-    public void setValue(String value) {
-        this.value = value;
-    }
+  public void setValue(String value) {
+    this.value = value;
+  }
 }

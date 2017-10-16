@@ -4,5 +4,5 @@ import com.smt.dto.SmtRequestHeaderDto;
 
 public interface SmtRequestHeaderService {
 
-    SmtRequestHeaderDto create(SmtRequestHeaderDto requestHeaderDto);
+  SmtRequestHeaderDto create(SmtRequestHeaderDto requestHeaderDto);
 }

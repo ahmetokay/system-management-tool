@@ -10,16 +10,17 @@ import org.springframework.transaction.annotation.Transactional;
 @Transactional(readOnly = true)
 public class SmtRequestNotificationManagerImpl implements SmtRequestNotificationManager {
 
-    private SmtRequestNotificationRepository requestNotificationRepository;
+  private SmtRequestNotificationRepository requestNotificationRepository;
 
-    @Autowired
-    public SmtRequestNotificationManagerImpl(SmtRequestNotificationRepository requestNotificationRepository) {
-        this.requestNotificationRepository = requestNotificationRepository;
-    }
+  @Autowired
+  public SmtRequestNotificationManagerImpl(
+      SmtRequestNotificationRepository requestNotificationRepository) {
+    this.requestNotificationRepository = requestNotificationRepository;
+  }
 
-    @Override
-    @Transactional
-    public SmtRequestNotification create(SmtRequestNotification requestNotification) {
-        return requestNotificationRepository.save(requestNotification);
-    }
+  @Override
+  @Transactional
+  public SmtRequestNotification create(SmtRequestNotification requestNotification) {
+    return requestNotificationRepository.save(requestNotification);
+  }
 }

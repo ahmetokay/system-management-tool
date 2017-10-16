@@ -1,6 +1,7 @@
 # system-management-tool
 
 Istek icerigi
+
 	- URL
 		- GET
 		- DELETE
@@ -13,7 +14,8 @@ Istek icerigi
 ********************************************************************************************************************************************************************************************************************	
 
 Hata durumlari
-		
+
+		Sunucu pinge kapali olabilir
 		ping(ipAddress){
 
 			Server kapanmis olabilir.[Server'a ulasilamama sebebi bulunabilecek mi?]

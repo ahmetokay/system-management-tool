@@ -9,39 +9,39 @@ import java.util.List;
 @Table(name = "smt_project")
 public class SmtProject extends BaseEntity {
 
-    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "smtProject")
-    private List<SmtRequest> requestList;
+  @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "smtProject")
+  private List<SmtRequest> requestList;
 
-    @Column(name = "name")
-    private String name;
+  @Column(name = "name")
+  private String name;
 
-    @Column(name = "description")
-    private String description;
+  @Column(name = "description")
+  private String description;
 
-    public SmtProject() {
-    }
+  public SmtProject() {
+  }
 
-    public List<SmtRequest> getRequestList() {
-        return requestList;
-    }
+  public List<SmtRequest> getRequestList() {
+    return requestList;
+  }
 
-    public void setRequestList(List<SmtRequest> requestList) {
-        this.requestList = requestList;
-    }
+  public void setRequestList(List<SmtRequest> requestList) {
+    this.requestList = requestList;
+  }
 
-    public String getName() {
-        return name;
-    }
+  public String getName() {
+    return name;
+  }
 
-    public void setName(String name) {
-        this.name = name;
-    }
+  public void setName(String name) {
+    this.name = name;
+  }
 
-    public String getDescription() {
-        return description;
-    }
+  public String getDescription() {
+    return description;
+  }
 
-    public void setDescription(String description) {
-        this.description = description;
-    }
+  public void setDescription(String description) {
+    this.description = description;
+  }
 }

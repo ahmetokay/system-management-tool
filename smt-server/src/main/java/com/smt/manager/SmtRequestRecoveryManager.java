@@ -4,5 +4,5 @@ import com.smt.entity.SmtRequestRecovery;
 
 public interface SmtRequestRecoveryManager {
 
-    SmtRequestRecovery create(SmtRequestRecovery requestRecovery);
+  SmtRequestRecovery create(SmtRequestRecovery requestRecovery);
 }

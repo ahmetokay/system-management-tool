@@ -14,15 +14,17 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping(value = "/smt_request_history")
 public class SmtRequestHistoryRestService {
 
-    private SmtRequestHistoryService requestHistoryService;
+  private SmtRequestHistoryService requestHistoryService;
 
-    @Autowired
-    public SmtRequestHistoryRestService(SmtRequestHistoryService requestHistoryService) {
-        this.requestHistoryService = requestHistoryService;
-    }
+  @Autowired
+  public SmtRequestHistoryRestService(SmtRequestHistoryService requestHistoryService) {
+    this.requestHistoryService = requestHistoryService;
+  }
 
-    @RequestMapping(value = "/create", method = RequestMethod.POST)
-    public ResponseEntity<SmtRequestHistoryDto> create(@RequestBody SmtRequestHistoryDto requestHistoryDto) {
-        return new ResponseEntity<SmtRequestHistoryDto>(requestHistoryService.create(requestHistoryDto), HttpStatus.OK);
-    }
+  @RequestMapping(value = "/create", method = RequestMethod.POST)
+  public ResponseEntity<SmtRequestHistoryDto> create(
+      @RequestBody SmtRequestHistoryDto requestHistoryDto) {
+    return new ResponseEntity<SmtRequestHistoryDto>(requestHistoryService.create(requestHistoryDto),
+        HttpStatus.OK);
+  }
 }

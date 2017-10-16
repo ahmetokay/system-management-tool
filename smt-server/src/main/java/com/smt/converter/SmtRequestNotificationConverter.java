@@ -15,36 +15,37 @@ import org.springframework.stereotype.Component;
  */
 @Component
 @Scope(value = "prototype", proxyMode = ScopedProxyMode.TARGET_CLASS)
-public class SmtRequestNotificationConverter extends BaseAbstractConverter<SmtRequestNotificationDto, SmtRequestNotification> {
+public class SmtRequestNotificationConverter extends
+    BaseAbstractConverter<SmtRequestNotificationDto, SmtRequestNotification> {
 
-    private SmtRequestConverter smtRequestConverter;
+  private SmtRequestConverter smtRequestConverter;
 
-    @Autowired
-    public SmtRequestNotificationConverter(SmtRequestConverter smtRequestConverter) {
-        this.smtRequestConverter = smtRequestConverter;
+  @Autowired
+  public SmtRequestNotificationConverter(SmtRequestConverter smtRequestConverter) {
+    this.smtRequestConverter = smtRequestConverter;
+  }
+
+  @Override
+  protected void doConvertToDto(SmtRequestNotificationDto dto, SmtRequestNotification entity) {
+    dto.setEmail(entity.getEmail());
+    dto.setSms(entity.getSms());
+    dto.setRestart(entity.getRestart());
+
+    SmtRequest smtRequest = entity.getSmtRequest();
+    if (smtRequest != null) {
+      dto.setSmtRequest(smtRequestConverter.convertToDto(smtRequest));
     }
+  }
 
-    @Override
-    protected void doConvertToDto(SmtRequestNotificationDto dto, SmtRequestNotification entity) {
-        dto.setEmail(entity.getEmail());
-        dto.setSms(entity.getSms());
-        dto.setRestart(entity.getRestart());
+  @Override
+  protected void doConvertToEntity(SmtRequestNotification entity, SmtRequestNotificationDto dto) {
+    entity.setEmail(dto.getEmail());
+    entity.setSms(dto.getSms());
+    entity.setRestart(dto.getRestart());
 
-        SmtRequest smtRequest = entity.getSmtRequest();
-        if (smtRequest != null) {
-            dto.setSmtRequest(smtRequestConverter.convertToDto(smtRequest));
-        }
+    SmtRequestDto smtRequest = dto.getSmtRequest();
+    if (smtRequest != null) {
+      entity.setSmtRequest(smtRequestConverter.convertToEntity(smtRequest));
     }
-
-    @Override
-    protected void doConvertToEntity(SmtRequestNotification entity, SmtRequestNotificationDto dto) {
-        entity.setEmail(dto.getEmail());
-        entity.setSms(dto.getSms());
-        entity.setRestart(dto.getRestart());
-
-        SmtRequestDto smtRequest = dto.getSmtRequest();
-        if (smtRequest != null) {
-            entity.setSmtRequest(smtRequestConverter.convertToEntity(smtRequest));
-        }
-    }
+  }
 }

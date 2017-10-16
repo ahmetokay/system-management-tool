@@ -14,15 +14,17 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping(value = "/smt_request_header")
 public class SmtRequestHeaderRestService {
 
-    private SmtRequestHeaderService requestHeaderService;
+  private SmtRequestHeaderService requestHeaderService;
 
-    @Autowired
-    public SmtRequestHeaderRestService(SmtRequestHeaderService requestHeaderService) {
-        this.requestHeaderService = requestHeaderService;
-    }
+  @Autowired
+  public SmtRequestHeaderRestService(SmtRequestHeaderService requestHeaderService) {
+    this.requestHeaderService = requestHeaderService;
+  }
 
-    @RequestMapping(value = "/create", method = RequestMethod.POST)
-    public ResponseEntity<SmtRequestHeaderDto> create(@RequestBody SmtRequestHeaderDto requestHeaderDto) {
-        return new ResponseEntity<SmtRequestHeaderDto>(requestHeaderService.create(requestHeaderDto), HttpStatus.OK);
-    }
+  @RequestMapping(value = "/create", method = RequestMethod.POST)
+  public ResponseEntity<SmtRequestHeaderDto> create(
+      @RequestBody SmtRequestHeaderDto requestHeaderDto) {
+    return new ResponseEntity<SmtRequestHeaderDto>(requestHeaderService.create(requestHeaderDto),
+        HttpStatus.OK);
+  }
 }

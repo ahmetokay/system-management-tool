@@ -4,5 +4,5 @@ import com.smt.entity.SmtRequest;
 
 public interface SmtRequestManager {
 
-    SmtRequest create(SmtRequest request);
+  SmtRequest create(SmtRequest request);
 }

@@ -15,34 +15,35 @@ import org.springframework.stereotype.Component;
  */
 @Component
 @Scope(value = "prototype", proxyMode = ScopedProxyMode.TARGET_CLASS)
-public class SmtRequestHeaderConverter extends BaseAbstractConverter<SmtRequestHeaderDto, SmtRequestHeader> {
+public class SmtRequestHeaderConverter extends
+    BaseAbstractConverter<SmtRequestHeaderDto, SmtRequestHeader> {
 
-    private SmtRequestConverter smtRequestConverter;
+  private SmtRequestConverter smtRequestConverter;
 
-    @Autowired
-    public SmtRequestHeaderConverter(SmtRequestConverter smtRequestConverter) {
-        this.smtRequestConverter = smtRequestConverter;
+  @Autowired
+  public SmtRequestHeaderConverter(SmtRequestConverter smtRequestConverter) {
+    this.smtRequestConverter = smtRequestConverter;
+  }
+
+  @Override
+  protected void doConvertToDto(SmtRequestHeaderDto dto, SmtRequestHeader entity) {
+    dto.setKey(entity.getKey());
+    dto.setValue(entity.getValue());
+
+    SmtRequest smtRequest = entity.getSmtRequest();
+    if (smtRequest != null) {
+      dto.setSmtRequest(smtRequestConverter.convertToDto(smtRequest));
     }
+  }
 
-    @Override
-    protected void doConvertToDto(SmtRequestHeaderDto dto, SmtRequestHeader entity) {
-        dto.setKey(entity.getKey());
-        dto.setValue(entity.getValue());
+  @Override
+  protected void doConvertToEntity(SmtRequestHeader entity, SmtRequestHeaderDto dto) {
+    entity.setKey(dto.getKey());
+    entity.setValue(dto.getValue());
 
-        SmtRequest smtRequest = entity.getSmtRequest();
-        if (smtRequest != null) {
-            dto.setSmtRequest(smtRequestConverter.convertToDto(smtRequest));
-        }
+    SmtRequestDto smtRequest = dto.getSmtRequest();
+    if (smtRequest != null) {
+      entity.setSmtRequest(smtRequestConverter.convertToEntity(smtRequest));
     }
-
-    @Override
-    protected void doConvertToEntity(SmtRequestHeader entity, SmtRequestHeaderDto dto) {
-        entity.setKey(dto.getKey());
-        entity.setValue(dto.getValue());
-
-        SmtRequestDto smtRequest = dto.getSmtRequest();
-        if (smtRequest != null) {
-            entity.setSmtRequest(smtRequestConverter.convertToEntity(smtRequest));
-        }
-    }
+  }
 }

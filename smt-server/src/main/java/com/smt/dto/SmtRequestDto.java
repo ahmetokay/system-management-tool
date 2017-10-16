@@ -9,107 +9,108 @@ import java.util.List;
  */
 public class SmtRequestDto extends BaseDto {
 
-    private SmtProjectDto smtProject;
+  private SmtProjectDto smtProject;
 
-    private SmtRequestTypeDto smtRequestType;
+  private SmtRequestTypeDto smtRequestType;
 
-    private SmtRequestRecoveryDto smtRequestRecovery;
+  private SmtRequestRecoveryDto smtRequestRecovery;
 
-    private List<SmtRequestHistoryDto> smtRequestHistoryList;
+  private List<SmtRequestHistoryDto> smtRequestHistoryList;
 
-    private List<SmtRequestNotificationDto> smtRequestNotificationList;
+  private List<SmtRequestNotificationDto> smtRequestNotificationList;
 
-    private List<SmtRequestHeaderDto> smtRequestHeaderList;
+  private List<SmtRequestHeaderDto> smtRequestHeaderList;
 
-    private String url;
+  private String url;
 
-    private String body;
+  private String body;
 
-    private Integer refreshTime;
+  private Integer refreshTime;
 
-    private Integer tryCount;
+  private Integer tryCount;
 
-    public SmtRequestDto() {
+  public SmtRequestDto() {
 
-    }
+  }
 
-    public SmtProjectDto getSmtProject() {
-        return smtProject;
-    }
+  public SmtProjectDto getSmtProject() {
+    return smtProject;
+  }
 
-    public void setSmtProject(SmtProjectDto smtProject) {
-        this.smtProject = smtProject;
-    }
+  public void setSmtProject(SmtProjectDto smtProject) {
+    this.smtProject = smtProject;
+  }
 
-    public SmtRequestTypeDto getSmtRequestType() {
-        return smtRequestType;
-    }
+  public SmtRequestTypeDto getSmtRequestType() {
+    return smtRequestType;
+  }
 
-    public void setSmtRequestType(SmtRequestTypeDto smtRequestType) {
-        this.smtRequestType = smtRequestType;
-    }
+  public void setSmtRequestType(SmtRequestTypeDto smtRequestType) {
+    this.smtRequestType = smtRequestType;
+  }
 
-    public SmtRequestRecoveryDto getSmtRequestRecovery() {
-        return smtRequestRecovery;
-    }
+  public SmtRequestRecoveryDto getSmtRequestRecovery() {
+    return smtRequestRecovery;
+  }
 
-    public void setSmtRequestRecovery(SmtRequestRecoveryDto smtRequestRecovery) {
-        this.smtRequestRecovery = smtRequestRecovery;
-    }
+  public void setSmtRequestRecovery(SmtRequestRecoveryDto smtRequestRecovery) {
+    this.smtRequestRecovery = smtRequestRecovery;
+  }
 
-    public List<SmtRequestHistoryDto> getSmtRequestHistoryList() {
-        return smtRequestHistoryList;
-    }
+  public List<SmtRequestHistoryDto> getSmtRequestHistoryList() {
+    return smtRequestHistoryList;
+  }
 
-    public void setSmtRequestHistoryList(List<SmtRequestHistoryDto> smtRequestHistoryList) {
-        this.smtRequestHistoryList = smtRequestHistoryList;
-    }
+  public void setSmtRequestHistoryList(List<SmtRequestHistoryDto> smtRequestHistoryList) {
+    this.smtRequestHistoryList = smtRequestHistoryList;
+  }
 
-    public List<SmtRequestNotificationDto> getSmtRequestNotificationList() {
-        return smtRequestNotificationList;
-    }
+  public List<SmtRequestNotificationDto> getSmtRequestNotificationList() {
+    return smtRequestNotificationList;
+  }
 
-    public void setSmtRequestNotificationList(List<SmtRequestNotificationDto> smtRequestNotificationList) {
-        this.smtRequestNotificationList = smtRequestNotificationList;
-    }
+  public void setSmtRequestNotificationList(
+      List<SmtRequestNotificationDto> smtRequestNotificationList) {
+    this.smtRequestNotificationList = smtRequestNotificationList;
+  }
 
-    public List<SmtRequestHeaderDto> getSmtRequestHeaderList() {
-        return smtRequestHeaderList;
-    }
+  public List<SmtRequestHeaderDto> getSmtRequestHeaderList() {
+    return smtRequestHeaderList;
+  }
 
-    public void setSmtRequestHeaderList(List<SmtRequestHeaderDto> smtRequestHeaderList) {
-        this.smtRequestHeaderList = smtRequestHeaderList;
-    }
+  public void setSmtRequestHeaderList(List<SmtRequestHeaderDto> smtRequestHeaderList) {
+    this.smtRequestHeaderList = smtRequestHeaderList;
+  }
 
-    public String getUrl() {
-        return url;
-    }
+  public String getUrl() {
+    return url;
+  }
 
-    public void setUrl(String url) {
-        this.url = url;
-    }
+  public void setUrl(String url) {
+    this.url = url;
+  }
 
-    public String getBody() {
-        return body;
-    }
+  public String getBody() {
+    return body;
+  }
 
-    public void setBody(String body) {
-        this.body = body;
-    }
+  public void setBody(String body) {
+    this.body = body;
+  }
 
-    public Integer getRefreshTime() {
-        return refreshTime;
-    }
+  public Integer getRefreshTime() {
+    return refreshTime;
+  }
 
-    public void setRefreshTime(Integer refreshTime) {
-        this.refreshTime = refreshTime;
-    }
+  public void setRefreshTime(Integer refreshTime) {
+    this.refreshTime = refreshTime;
+  }
 
-    public Integer getTryCount() {
-        return tryCount;
-    }
+  public Integer getTryCount() {
+    return tryCount;
+  }
 
-    public void setTryCount(Integer tryCount) {
-        this.tryCount = tryCount;
-    }
+  public void setTryCount(Integer tryCount) {
+    this.tryCount = tryCount;
+  }
 }

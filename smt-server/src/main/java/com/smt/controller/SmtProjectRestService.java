@@ -17,15 +17,15 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping(value = "/smt_project")
 public class SmtProjectRestService {
 
-    private SmtProjectService projectService;
+  private SmtProjectService projectService;
 
-    @Autowired
-    public SmtProjectRestService(SmtProjectService projectService) {
-        this.projectService = projectService;
-    }
+  @Autowired
+  public SmtProjectRestService(SmtProjectService projectService) {
+    this.projectService = projectService;
+  }
 
-    @RequestMapping(value = "/create", method = RequestMethod.POST)
-    public ResponseEntity<SmtProjectDto> create(@RequestBody SmtProjectDto projectDto) {
-        return new ResponseEntity<SmtProjectDto>(projectService.create(projectDto), HttpStatus.OK);
-    }
+  @RequestMapping(value = "/create", method = RequestMethod.POST)
+  public ResponseEntity<SmtProjectDto> create(@RequestBody SmtProjectDto projectDto) {
+    return new ResponseEntity<SmtProjectDto>(projectService.create(projectDto), HttpStatus.OK);
+  }
 }
