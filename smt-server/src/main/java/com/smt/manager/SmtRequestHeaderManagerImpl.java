@@ -2,6 +2,7 @@ package com.smt.manager;
 
 import com.smt.entity.SmtRequestHeader;
 import com.smt.repository.SmtRequestHeaderRepository;
+import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
@@ -21,5 +22,11 @@ public class SmtRequestHeaderManagerImpl implements SmtRequestHeaderManager {
   @Transactional
   public SmtRequestHeader create(SmtRequestHeader requestHeader) {
     return requestHeaderRepository.save(requestHeader);
+  }
+
+  @Override
+  public List<SmtRequestHeader> list(Long requestId) {
+    //TODO query olarak eklenecek
+    return requestHeaderRepository.findAll();
   }
 }

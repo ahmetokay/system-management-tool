@@ -30,10 +30,11 @@ public class SmtRequestHeaderConverter extends
     dto.setKey(entity.getKey());
     dto.setValue(entity.getValue());
 
-    SmtRequest smtRequest = entity.getSmtRequest();
-    if (smtRequest != null) {
-      dto.setSmtRequest(smtRequestConverter.convertToDto(smtRequest));
-    }
+    //TODO burada recursive olarak icice giriyor ve yamisiyor :))
+//    SmtRequest smtRequest = entity.getSmtRequest();
+//    if (smtRequest != null) {
+//      dto.setSmtRequest(smtRequestConverter.convertToDto(smtRequest));
+//    }
   }
 
   @Override
