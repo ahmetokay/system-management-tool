@@ -7,6 +7,8 @@ import com.core.tr.model.BaseDto;
  */
 public class SmtRequestRecoveryDto extends BaseDto {
 
+    private SmtRequestDto smtRequest;
+
     private String ip;
 
     private String username;
@@ -16,6 +18,14 @@ public class SmtRequestRecoveryDto extends BaseDto {
     private String runScript;
 
     public SmtRequestRecoveryDto() {
+    }
+
+    public SmtRequestDto getSmtRequest() {
+        return smtRequest;
+    }
+
+    public void setSmtRequest(SmtRequestDto smtRequest) {
+        this.smtRequest = smtRequest;
     }
 
     public String getIp() {

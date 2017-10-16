@@ -7,11 +7,21 @@ import com.core.tr.model.BaseDto;
  */
 public class SmtRequestTypeDto extends BaseDto {
 
+    private SmtRequestDto smtRequest;
+
     private String name;
 
     private String description;
 
     public SmtRequestTypeDto() {
+    }
+
+    public SmtRequestDto getSmtRequest() {
+        return smtRequest;
+    }
+
+    public void setSmtRequest(SmtRequestDto smtRequest) {
+        this.smtRequest = smtRequest;
     }
 
     public String getName() {

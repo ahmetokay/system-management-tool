@@ -9,6 +9,8 @@ import java.sql.Timestamp;
  */
 public class SmtRequestHistoryDto extends BaseDto {
 
+    private SmtRequestDto smtRequest;
+
     private Timestamp name;
 
     private String status;
@@ -16,6 +18,14 @@ public class SmtRequestHistoryDto extends BaseDto {
     private String statusMessage;
 
     public SmtRequestHistoryDto() {
+    }
+
+    public SmtRequestDto getSmtRequest() {
+        return smtRequest;
+    }
+
+    public void setSmtRequest(SmtRequestDto smtRequest) {
+        this.smtRequest = smtRequest;
     }
 
     public Timestamp getName() {
