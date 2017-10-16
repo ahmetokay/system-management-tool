@@ -6,19 +6,20 @@ import com.smt.dto.SmtRequestTypeDto;
 import com.smt.entity.SmtRequest;
 import com.smt.entity.SmtRequestType;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Lazy;
+import org.springframework.context.annotation.Scope;
+import org.springframework.context.annotation.ScopedProxyMode;
 import org.springframework.stereotype.Component;
 
 /**
  * @author bocal
  */
 @Component
+@Scope(value = "prototype", proxyMode = ScopedProxyMode.TARGET_CLASS)
 public class SmtRequestTypeConverter extends BaseAbstractConverter<SmtRequestTypeDto, SmtRequestType> {
 
     private SmtRequestConverter smtRequestConverter;
 
     @Autowired
-    @Lazy
     public SmtRequestTypeConverter(SmtRequestConverter smtRequestConverter) {
         this.smtRequestConverter = smtRequestConverter;
     }

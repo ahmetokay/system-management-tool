@@ -6,19 +6,20 @@ import com.smt.dto.SmtRequestHistoryDto;
 import com.smt.entity.SmtRequest;
 import com.smt.entity.SmtRequestHistory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Lazy;
+import org.springframework.context.annotation.Scope;
+import org.springframework.context.annotation.ScopedProxyMode;
 import org.springframework.stereotype.Component;
 
 /**
  * @author bocal
  */
 @Component
+@Scope(value = "prototype", proxyMode = ScopedProxyMode.TARGET_CLASS)
 public class SmtRequestHistoryConverter extends BaseAbstractConverter<SmtRequestHistoryDto, SmtRequestHistory> {
 
     private SmtRequestConverter smtRequestConverter;
 
     @Autowired
-    @Lazy
     public SmtRequestHistoryConverter(SmtRequestConverter smtRequestConverter) {
         this.smtRequestConverter = smtRequestConverter;
     }
