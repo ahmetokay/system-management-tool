@@ -18,6 +18,7 @@ public class SmtRequestHeaderManagerImpl implements SmtRequestHeaderManager {
     }
 
     @Override
+    @Transactional
     public SmtRequestHeader create(SmtRequestHeader requestHeader) {
         return requestHeaderRepository.save(requestHeader);
     }

@@ -18,6 +18,7 @@ public class SmtRequestHistoryManagerImpl implements SmtRequestHistoryManager {
     }
 
     @Override
+    @Transactional
     public SmtRequestHistory create(SmtRequestHistory requestHistory) {
         return requestHistoryRepository.save(requestHistory);
     }

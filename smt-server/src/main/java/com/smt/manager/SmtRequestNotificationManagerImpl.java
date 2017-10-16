@@ -18,6 +18,7 @@ public class SmtRequestNotificationManagerImpl implements SmtRequestNotification
     }
 
     @Override
+    @Transactional
     public SmtRequestNotification create(SmtRequestNotification requestNotification) {
         return requestNotificationRepository.save(requestNotification);
     }

@@ -18,6 +18,7 @@ public class SmtRequestRecoveryManagerImpl implements SmtRequestRecoveryManager 
     }
 
     @Override
+    @Transactional
     public SmtRequestRecovery create(SmtRequestRecovery requestRecovery) {
         return requestRecoveryRepository.save(requestRecovery);
     }
