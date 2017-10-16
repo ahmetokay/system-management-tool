@@ -6,19 +6,20 @@ import com.smt.dto.SmtRequestRecoveryDto;
 import com.smt.entity.SmtRequest;
 import com.smt.entity.SmtRequestRecovery;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Lazy;
+import org.springframework.context.annotation.Scope;
+import org.springframework.context.annotation.ScopedProxyMode;
 import org.springframework.stereotype.Component;
 
 /**
  * @author bocal
  */
 @Component
+@Scope(value = "prototype", proxyMode = ScopedProxyMode.TARGET_CLASS)
 public class SmtRequestRecoveryConverter extends BaseAbstractConverter<SmtRequestRecoveryDto, SmtRequestRecovery> {
 
     private SmtRequestConverter smtRequestConverter;
 
     @Autowired
-    @Lazy
     public SmtRequestRecoveryConverter(SmtRequestConverter smtRequestConverter) {
         this.smtRequestConverter = smtRequestConverter;
     }

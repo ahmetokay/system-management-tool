@@ -6,7 +6,6 @@ import com.smt.dto.SmtRequestHeaderDto;
 import com.smt.entity.SmtRequest;
 import com.smt.entity.SmtRequestHeader;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Lazy;
 import org.springframework.context.annotation.Scope;
 import org.springframework.context.annotation.ScopedProxyMode;
 import org.springframework.stereotype.Component;
