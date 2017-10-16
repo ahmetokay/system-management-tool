@@ -50,6 +50,13 @@
       <artifactId>httpclient</artifactId>
       <version>4.5.3</version>
     </dependency>
+
+
+    <dependency>
+      <groupId>com.sun.mail</groupId>
+      <artifactId>javax.mail</artifactId>
+      <version>1.5.5</version>
+    </dependency>
     <!--External Dependencies-->
   </dependencies>
 </project>
