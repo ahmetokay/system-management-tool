@@ -41,7 +41,7 @@ public class SmtHttpClient {
   }
 
   private HttpRequestBase prepareRequest(SmtRequest smtRequest) {
-    HttpRequestBase request = prepareRequestType(smtRequest);
+    HttpRequestBase request = createRequest(smtRequest);
     List<SmtRequestHeader> smtRequestHeaderList = smtRequest.getSmtRequestHeaderList();
     for (SmtRequestHeader smtRequestHeader : smtRequestHeaderList) {
       String key = smtRequestHeader.getKey();
@@ -51,7 +51,7 @@ public class SmtHttpClient {
     return request;
   }
 
-  private HttpRequestBase prepareRequestType(SmtRequest smtRequest) {
+  private HttpRequestBase createRequest(SmtRequest smtRequest) {
     HttpRequestType httpRequestType = HttpRequestType
         .valueOf(smtRequest.getSmtRequestType().getName());
     switch (httpRequestType) {
