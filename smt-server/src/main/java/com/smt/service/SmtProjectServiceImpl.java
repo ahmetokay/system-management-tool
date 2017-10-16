@@ -25,8 +25,8 @@ public class SmtProjectServiceImpl implements SmtProjectService {
     }
 
     @Override
-    public SmtProjectDto create(SmtProjectDto project) {
-        SmtProject smtProject = projectManager.create(projectConverter.convertToEntity(project));
+    public SmtProjectDto create(SmtProjectDto projectDto) {
+        SmtProject smtProject = projectManager.create(projectConverter.convertToEntity(projectDto));
         return projectConverter.convertToDto(smtProject);
     }
 }

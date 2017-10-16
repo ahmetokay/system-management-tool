@@ -7,6 +7,5 @@ import com.smt.dto.SmtProjectDto;
  */
 public interface SmtProjectService {
 
-    SmtProjectDto create(SmtProjectDto project);
-
+    SmtProjectDto create(SmtProjectDto projectDto);
 }
