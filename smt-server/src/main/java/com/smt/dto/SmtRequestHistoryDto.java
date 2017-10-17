@@ -1,7 +1,6 @@
 package com.smt.dto;
 
 import com.core.tr.model.BaseDto;
-
 import java.sql.Timestamp;
 
 /**
@@ -9,7 +8,7 @@ import java.sql.Timestamp;
  */
 public class SmtRequestHistoryDto extends BaseDto {
 
-  private SmtRequestDto smtRequest;
+  private Long smtRequestId;
 
   private Timestamp name;
 
@@ -20,12 +19,12 @@ public class SmtRequestHistoryDto extends BaseDto {
   public SmtRequestHistoryDto() {
   }
 
-  public SmtRequestDto getSmtRequest() {
-    return smtRequest;
+  public Long getSmtRequestId() {
+    return smtRequestId;
   }
 
-  public void setSmtRequest(SmtRequestDto smtRequest) {
-    this.smtRequest = smtRequest;
+  public void setSmtRequestId(Long smtRequestId) {
+    this.smtRequestId = smtRequestId;
   }
 
   public Timestamp getName() {

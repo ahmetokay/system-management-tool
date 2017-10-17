@@ -15,7 +15,6 @@ import java.util.List;
  * @author bocal
  */
 @Component
-@Scope(value = "prototype", proxyMode = ScopedProxyMode.TARGET_CLASS)
 public class SmtRequestConverter extends BaseAbstractConverter<SmtRequestDto, SmtRequest> {
 
   private SmtProjectConverter smtProjectConverter;
