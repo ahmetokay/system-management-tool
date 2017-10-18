@@ -11,6 +11,8 @@ import org.springframework.transaction.annotation.Transactional;
 @Transactional(readOnly = true)
 public class SmtRequestHeaderManagerImpl implements SmtRequestHeaderManager {
 
+  private String SELECT_QUERY = "SELECT rh FROM SmtRequestHeader rh WHERE rh.isActive=true and rh.smtRequest=%s";
+
   private SmtRequestHeaderRepository requestHeaderRepository;
 
   @Autowired
@@ -26,7 +28,6 @@ public class SmtRequestHeaderManagerImpl implements SmtRequestHeaderManager {
 
   @Override
   public List<SmtRequestHeader> list(Long requestId) {
-    //TODO query olarak eklenecek
-    return requestHeaderRepository.findAll();
+    return requestHeaderRepository.query(String.format(SELECT_QUERY, requestId));
   }
 }
