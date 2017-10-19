@@ -2,6 +2,7 @@ package com.smt.service;
 
 import com.smt.converter.SmtRequestNotificationConverter;
 import com.smt.dto.SmtRequestNotificationDto;
+import com.smt.entity.SmtRequest;
 import com.smt.entity.SmtRequestNotification;
 import com.smt.manager.SmtRequestNotificationManager;
 import java.util.List;
@@ -24,9 +25,16 @@ public class SmtRequestNotificationServiceImpl implements SmtRequestNotification
   }
 
   @Override
-  public SmtRequestNotificationDto create(SmtRequestNotificationDto requestNotificationDto) {
-    SmtRequestNotification smtRequestNotification = requestNotificationManager
-        .create(requestNotificationConverter.convertToEntity(requestNotificationDto));
+  public SmtRequestNotificationDto create(SmtRequestNotificationDto requestNotificationDto,
+      Long requestId) {
+    SmtRequestNotification smtRequestNotification = requestNotificationConverter
+        .convertToEntity(requestNotificationDto);
+
+    SmtRequest smtRequest = new SmtRequest();
+    smtRequest.setPkid(requestId);
+    smtRequestNotification.setSmtRequest(smtRequest);
+
+    smtRequestNotification = requestNotificationManager.create(smtRequestNotification);
     return requestNotificationConverter.convertToDto(smtRequestNotification);
   }
 

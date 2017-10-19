@@ -5,7 +5,7 @@ import java.util.List;
 
 public interface SmtRequestHistoryService {
 
-  SmtRequestHistoryDto create(SmtRequestHistoryDto requestHistoryDto);
+  SmtRequestHistoryDto create(SmtRequestHistoryDto requestHistoryDto, Long requestId);
 
   List<SmtRequestHistoryDto> list(Long requestId);
 }

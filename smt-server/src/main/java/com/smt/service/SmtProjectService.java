@@ -8,7 +8,7 @@ import java.util.List;
  */
 public interface SmtProjectService {
 
-  SmtProjectDto create(SmtProjectDto projectDto);
+  SmtProjectDto create(SmtProjectDto projectDto, Long userId);
 
-  List<SmtProjectDto> list(Long projectId);
+  List<SmtProjectDto> list(Long userId);
 }

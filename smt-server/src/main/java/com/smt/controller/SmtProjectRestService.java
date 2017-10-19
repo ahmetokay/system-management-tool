@@ -9,6 +9,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 /**
@@ -26,13 +27,14 @@ public class SmtProjectRestService {
   }
 
   @RequestMapping(value = "/create", method = RequestMethod.POST)
-  public ResponseEntity<SmtProjectDto> create(@RequestBody SmtProjectDto projectDto) {
-    return new ResponseEntity<>(projectService.create(projectDto), HttpStatus.OK);
+  public ResponseEntity<SmtProjectDto> create(@RequestBody SmtProjectDto projectDto,
+      @RequestParam("userId") Long userId) {
+    return new ResponseEntity<>(projectService.create(projectDto, userId), HttpStatus.OK);
   }
 
   //FIXME proje listeleme icerisine userId falan almasi gerekli bu ikisini baglamak sart oldu :))
   @RequestMapping(value = "/list", method = RequestMethod.POST)
-  public ResponseEntity<List<SmtProjectDto>> list() {
-    return new ResponseEntity<>(projectService.list(1L), HttpStatus.OK);
+  public ResponseEntity<List<SmtProjectDto>> list(@RequestParam("userId") Long userId) {
+    return new ResponseEntity<>(projectService.list(userId), HttpStatus.OK);
   }
 }

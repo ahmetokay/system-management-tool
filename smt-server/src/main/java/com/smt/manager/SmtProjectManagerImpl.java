@@ -14,7 +14,7 @@ import org.springframework.transaction.annotation.Transactional;
 @Transactional(readOnly = true)
 public class SmtProjectManagerImpl implements SmtProjectManager {
 
-  private String SELECT_QUERY = "SELECT t FROM SmtProject t WHERE t.isActive=true";
+  private String SELECT_QUERY = "SELECT t FROM SmtProject t WHERE t.isActive=true and t.smtUser=%s";
 
   private SmtProjectRepository projectRepository;
 
@@ -30,7 +30,7 @@ public class SmtProjectManagerImpl implements SmtProjectManager {
   }
 
   @Override
-  public List<SmtProject> list(Long projectId) {
-    return projectRepository.query(SELECT_QUERY);
+  public List<SmtProject> list(Long userId) {
+    return projectRepository.query(String.format(SELECT_QUERY, userId));
   }
 }

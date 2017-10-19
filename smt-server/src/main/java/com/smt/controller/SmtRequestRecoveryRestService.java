@@ -25,9 +25,10 @@ public class SmtRequestRecoveryRestService {
 
   @RequestMapping(value = "/create", method = RequestMethod.POST)
   public ResponseEntity<SmtRequestRecoveryDto> create(
-      @RequestBody SmtRequestRecoveryDto requestRecoveryDto) {
-    return new ResponseEntity<SmtRequestRecoveryDto>(
-        requestRecoveryService.create(requestRecoveryDto), HttpStatus.OK);
+      @RequestBody SmtRequestRecoveryDto requestRecoveryDto,
+      @RequestParam("requestId") Long requestId) {
+    return new ResponseEntity<>(
+        requestRecoveryService.create(requestRecoveryDto, requestId), HttpStatus.OK);
   }
 
   @RequestMapping(value = "/list", method = RequestMethod.POST)

@@ -5,7 +5,7 @@ import java.util.List;
 
 public interface SmtRequestRecoveryService {
 
-  SmtRequestRecoveryDto create(SmtRequestRecoveryDto requestRecoveryDto);
+  SmtRequestRecoveryDto create(SmtRequestRecoveryDto requestRecoveryDto, Long requestId);
 
   List<SmtRequestRecoveryDto> list(Long requestId);
 }

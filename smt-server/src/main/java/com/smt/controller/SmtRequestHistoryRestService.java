@@ -25,8 +25,10 @@ public class SmtRequestHistoryRestService {
 
   @RequestMapping(value = "/create", method = RequestMethod.POST)
   public ResponseEntity<SmtRequestHistoryDto> create(
-      @RequestBody SmtRequestHistoryDto requestHistoryDto) {
-    return new ResponseEntity<>(requestHistoryService.create(requestHistoryDto), HttpStatus.OK);
+      @RequestBody SmtRequestHistoryDto requestHistoryDto,
+      @RequestParam("requestId") Long requestId) {
+    return new ResponseEntity<>(requestHistoryService.create(requestHistoryDto, requestId),
+        HttpStatus.OK);
   }
 
   @RequestMapping(value = "/list", method = RequestMethod.POST)

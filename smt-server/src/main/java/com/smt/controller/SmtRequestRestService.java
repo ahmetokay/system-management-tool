@@ -24,12 +24,13 @@ public class SmtRequestRestService {
   }
 
   @RequestMapping(value = "/create", method = RequestMethod.POST)
-  public ResponseEntity<SmtRequestDto> create(@RequestBody SmtRequestDto requestDto) {
-    return new ResponseEntity<>(requestService.create(requestDto), HttpStatus.OK);
+  public ResponseEntity<SmtRequestDto> create(@RequestBody SmtRequestDto requestDto,
+      @RequestParam("projectId") Long projectId) {
+    return new ResponseEntity<>(requestService.create(requestDto, projectId), HttpStatus.OK);
   }
 
   @RequestMapping(value = "/list", method = RequestMethod.POST)
-  public ResponseEntity<List<SmtRequestDto>> list(@RequestParam("requestId") Long requestId) {
-    return new ResponseEntity<>(requestService.list(requestId), HttpStatus.OK);
+  public ResponseEntity<List<SmtRequestDto>> list(@RequestParam("requestId") Long projectId) {
+    return new ResponseEntity<>(requestService.list(projectId), HttpStatus.OK);
   }
 }

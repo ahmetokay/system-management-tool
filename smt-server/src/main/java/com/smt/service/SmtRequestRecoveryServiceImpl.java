@@ -2,6 +2,7 @@ package com.smt.service;
 
 import com.smt.converter.SmtRequestRecoveryConverter;
 import com.smt.dto.SmtRequestRecoveryDto;
+import com.smt.entity.SmtRequest;
 import com.smt.entity.SmtRequestRecovery;
 import com.smt.manager.SmtRequestRecoveryManager;
 import java.util.List;
@@ -23,9 +24,15 @@ public class SmtRequestRecoveryServiceImpl implements SmtRequestRecoveryService 
   }
 
   @Override
-  public SmtRequestRecoveryDto create(SmtRequestRecoveryDto requestRecoveryDto) {
-    SmtRequestRecovery smtRequestRecovery = requestRecoveryManager
-        .create(requestRecoveryConverter.convertToEntity(requestRecoveryDto));
+  public SmtRequestRecoveryDto create(SmtRequestRecoveryDto requestRecoveryDto, Long requestId) {
+    SmtRequestRecovery smtRequestRecovery = requestRecoveryConverter
+        .convertToEntity(requestRecoveryDto);
+
+    SmtRequest smtRequest = new SmtRequest();
+    smtRequest.setPkid(requestId);
+    smtRequestRecovery.setSmtRequest(smtRequest);
+
+    smtRequestRecovery = requestRecoveryManager.create(smtRequestRecovery);
     return requestRecoveryConverter.convertToDto(smtRequestRecovery);
   }
 

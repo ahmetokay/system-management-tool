@@ -2,6 +2,7 @@ package com.smt.service;
 
 import com.smt.converter.SmtRequestConverter;
 import com.smt.dto.SmtRequestDto;
+import com.smt.entity.SmtProject;
 import com.smt.entity.SmtRequest;
 import com.smt.manager.SmtRequestManager;
 import java.util.List;
@@ -23,8 +24,14 @@ public class SmtRequestServiceImpl implements SmtRequestService {
   }
 
   @Override
-  public SmtRequestDto create(SmtRequestDto request) {
-    SmtRequest smtRequest = requestManager.create(requestConverter.convertToEntity(request));
+  public SmtRequestDto create(SmtRequestDto request, Long projectId) {
+    SmtRequest smtRequest = requestConverter.convertToEntity(request);
+
+    SmtProject smtProject = new SmtProject();
+    smtProject.setPkid(projectId);
+    smtRequest.setSmtProject(smtProject);
+
+    smtRequest = requestManager.create(smtRequest);
     return requestConverter.convertToDto(smtRequest);
   }
 

@@ -10,5 +10,5 @@ public interface SmtProjectManager {
 
   SmtProject create(SmtProject project);
 
-  List<SmtProject> list(Long projectId);
+  List<SmtProject> list(Long userId);
 }

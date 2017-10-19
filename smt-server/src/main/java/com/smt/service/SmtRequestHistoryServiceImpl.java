@@ -2,6 +2,7 @@ package com.smt.service;
 
 import com.smt.converter.SmtRequestHistoryConverter;
 import com.smt.dto.SmtRequestHistoryDto;
+import com.smt.entity.SmtRequest;
 import com.smt.entity.SmtRequestHistory;
 import com.smt.manager.SmtRequestHistoryManager;
 import java.util.List;
@@ -23,9 +24,15 @@ public class SmtRequestHistoryServiceImpl implements SmtRequestHistoryService {
   }
 
   @Override
-  public SmtRequestHistoryDto create(SmtRequestHistoryDto requestHistoryDto) {
-    SmtRequestHistory smtRequestHistory = requestHistoryManager
-        .create(requestHistoryConverter.convertToEntity(requestHistoryDto));
+  public SmtRequestHistoryDto create(SmtRequestHistoryDto requestHistoryDto, Long requestId) {
+    SmtRequestHistory smtRequestHistory = requestHistoryConverter
+        .convertToEntity(requestHistoryDto);
+
+    SmtRequest smtRequest = new SmtRequest();
+    smtRequest.setPkid(requestId);
+    smtRequestHistory.setSmtRequest(smtRequest);
+
+    smtRequestHistory = requestHistoryManager.create(smtRequestHistory);
     return requestHistoryConverter.convertToDto(smtRequestHistory);
   }
 

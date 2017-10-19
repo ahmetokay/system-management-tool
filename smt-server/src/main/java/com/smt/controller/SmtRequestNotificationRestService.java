@@ -26,9 +26,10 @@ public class SmtRequestNotificationRestService {
 
   @RequestMapping(value = "/create", method = RequestMethod.POST)
   public ResponseEntity<SmtRequestNotificationDto> create(
-      @RequestBody SmtRequestNotificationDto requestNotificationDto) {
-    return new ResponseEntity<SmtRequestNotificationDto>(
-        requestNotificationService.create(requestNotificationDto), HttpStatus.OK);
+      @RequestBody SmtRequestNotificationDto requestNotificationDto,
+      @RequestParam("requestId") Long requestId) {
+    return new ResponseEntity<>(
+        requestNotificationService.create(requestNotificationDto, requestId), HttpStatus.OK);
   }
 
   @RequestMapping(value = "/list", method = RequestMethod.POST)

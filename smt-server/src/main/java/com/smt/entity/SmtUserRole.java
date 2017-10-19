@@ -1,25 +1,18 @@
 package com.smt.entity;
 
 import com.core.tr.entity.BaseEntity;
-import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "smt_project")
-public class SmtProject extends BaseEntity {
+@Table(name = "smt_user_role")
+public class SmtUserRole extends BaseEntity {
 
-  @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "smtProject")
-  private List<SmtRequest> requestList;
-
-  @ManyToOne(fetch = FetchType.LAZY)
-  @JoinColumn(name = "fk_smt_user_id")
+  @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "smtUserRole")
   private SmtUser smtUser;
 
   @Column(name = "name")
@@ -28,15 +21,7 @@ public class SmtProject extends BaseEntity {
   @Column(name = "description")
   private String description;
 
-  public SmtProject() {
-  }
-
-  public List<SmtRequest> getRequestList() {
-    return requestList;
-  }
-
-  public void setRequestList(List<SmtRequest> requestList) {
-    this.requestList = requestList;
+  public SmtUserRole() {
   }
 
   public SmtUser getSmtUser() {

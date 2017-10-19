@@ -5,7 +5,7 @@ import java.util.List;
 
 public interface SmtRequestService {
 
-  SmtRequestDto create(SmtRequestDto requestDto);
+  SmtRequestDto create(SmtRequestDto requestDto, Long projectId);
 
   List<SmtRequestDto> list(Long projectId);
 }
