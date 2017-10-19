@@ -14,14 +14,14 @@ public class SmtRequestHistoryConverter extends
 
   @Override
   protected void doConvertToDto(SmtRequestHistoryDto dto, SmtRequestHistory entity) {
-    dto.setName(entity.getName());
+    dto.setTime(entity.getTime());
     dto.setStatus(entity.getStatus());
     dto.setStatusMessage(entity.getStatusMessage());
   }
 
   @Override
   protected void doConvertToEntity(SmtRequestHistory entity, SmtRequestHistoryDto dto) {
-    entity.setName(dto.getName());
+    entity.setTime(dto.getTime());
     entity.setStatus(dto.getStatus());
     entity.setStatusMessage(dto.getStatusMessage());
   }

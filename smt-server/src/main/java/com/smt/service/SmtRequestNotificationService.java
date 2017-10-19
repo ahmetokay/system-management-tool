@@ -5,7 +5,8 @@ import java.util.List;
 
 public interface SmtRequestNotificationService {
 
-  SmtRequestNotificationDto create(SmtRequestNotificationDto requestNotificationDto, Long requestId);
+  SmtRequestNotificationDto create(SmtRequestNotificationDto requestNotificationDto,
+      Long requestId);
 
   List<SmtRequestNotificationDto> list(Long requestId);
 }

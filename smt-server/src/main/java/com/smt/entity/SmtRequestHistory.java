@@ -1,9 +1,13 @@
 package com.smt.entity;
 
 import com.core.tr.entity.BaseEntity;
-
-import javax.persistence.*;
 import java.sql.Timestamp;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
 
 @Entity
 @Table(name = "smt_request_history")
@@ -14,7 +18,7 @@ public class SmtRequestHistory extends BaseEntity {
   private SmtRequest smtRequest;
 
   @Column(name = "time")
-  private Timestamp name;
+  private Timestamp time;
 
   @Column(name = "status")
   private String status;
@@ -33,12 +37,12 @@ public class SmtRequestHistory extends BaseEntity {
     this.smtRequest = smtRequest;
   }
 
-  public Timestamp getName() {
-    return name;
+  public Timestamp getTime() {
+    return time;
   }
 
-  public void setName(Timestamp name) {
-    this.name = name;
+  public void setTime(Timestamp time) {
+    this.time = time;
   }
 
   public String getStatus() {

@@ -30,7 +30,7 @@ public class SmtRequestRestService {
   }
 
   @RequestMapping(value = "/list", method = RequestMethod.POST)
-  public ResponseEntity<List<SmtRequestDto>> list(@RequestParam("requestId") Long projectId) {
+  public ResponseEntity<List<SmtRequestDto>> list(@RequestParam("projectId") Long projectId) {
     return new ResponseEntity<>(requestService.list(projectId), HttpStatus.OK);
   }
 }
