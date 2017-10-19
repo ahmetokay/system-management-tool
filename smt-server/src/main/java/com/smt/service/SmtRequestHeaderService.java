@@ -5,7 +5,7 @@ import java.util.List;
 
 public interface SmtRequestHeaderService {
 
-  SmtRequestHeaderDto create(SmtRequestHeaderDto requestHeaderDto);
+  SmtRequestHeaderDto create(SmtRequestHeaderDto requestHeaderDto, Long requestId);
 
   List<SmtRequestHeaderDto> list(Long requestId);
 }

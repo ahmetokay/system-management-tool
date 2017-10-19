@@ -11,7 +11,7 @@ import org.springframework.transaction.annotation.Transactional;
 @Transactional(readOnly = true)
 public class SmtRequestHeaderManagerImpl implements SmtRequestHeaderManager {
 
-  private String SELECT_QUERY = "SELECT rh FROM SmtRequestHeader rh WHERE rh.isActive=true and rh.smtRequest=%s";
+  private String SELECT_QUERY = "SELECT t FROM SmtRequestHeader t WHERE t.isActive=true and t.smtRequest=%s";
 
   private SmtRequestHeaderRepository requestHeaderRepository;
 

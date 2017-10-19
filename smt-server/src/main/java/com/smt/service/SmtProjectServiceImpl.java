@@ -4,6 +4,7 @@ import com.smt.converter.SmtProjectConverter;
 import com.smt.dto.SmtProjectDto;
 import com.smt.entity.SmtProject;
 import com.smt.manager.SmtProjectManager;
+import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -28,5 +29,11 @@ public class SmtProjectServiceImpl implements SmtProjectService {
   public SmtProjectDto create(SmtProjectDto projectDto) {
     SmtProject smtProject = projectManager.create(projectConverter.convertToEntity(projectDto));
     return projectConverter.convertToDto(smtProject);
+  }
+
+  @Override
+  public List<SmtProjectDto> list(Long projectId) {
+    List<SmtProject> projectList = projectManager.list(projectId);
+    return projectConverter.convertToDtoList(projectList);
   }
 }

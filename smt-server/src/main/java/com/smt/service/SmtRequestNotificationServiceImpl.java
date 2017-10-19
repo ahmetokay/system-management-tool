@@ -4,6 +4,7 @@ import com.smt.converter.SmtRequestNotificationConverter;
 import com.smt.dto.SmtRequestNotificationDto;
 import com.smt.entity.SmtRequestNotification;
 import com.smt.manager.SmtRequestNotificationManager;
+import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -27,5 +28,12 @@ public class SmtRequestNotificationServiceImpl implements SmtRequestNotification
     SmtRequestNotification smtRequestNotification = requestNotificationManager
         .create(requestNotificationConverter.convertToEntity(requestNotificationDto));
     return requestNotificationConverter.convertToDto(smtRequestNotification);
+  }
+
+  @Override
+  public List<SmtRequestNotificationDto> list(Long requestId) {
+    List<SmtRequestNotification> requestNotificationList = requestNotificationManager
+        .list(requestId);
+    return requestNotificationConverter.convertToDtoList(requestNotificationList);
   }
 }

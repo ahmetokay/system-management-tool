@@ -4,6 +4,7 @@ import com.smt.converter.SmtRequestConverter;
 import com.smt.dto.SmtRequestDto;
 import com.smt.entity.SmtRequest;
 import com.smt.manager.SmtRequestManager;
+import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -25,5 +26,11 @@ public class SmtRequestServiceImpl implements SmtRequestService {
   public SmtRequestDto create(SmtRequestDto request) {
     SmtRequest smtRequest = requestManager.create(requestConverter.convertToEntity(request));
     return requestConverter.convertToDto(smtRequest);
+  }
+
+  @Override
+  public List<SmtRequestDto> list(Long projectId) {
+    List<SmtRequest> requestList = requestManager.list(projectId);
+    return requestConverter.convertToDtoList(requestList);
   }
 }

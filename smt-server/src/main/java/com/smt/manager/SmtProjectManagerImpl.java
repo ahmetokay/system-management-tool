@@ -2,6 +2,7 @@ package com.smt.manager;
 
 import com.smt.entity.SmtProject;
 import com.smt.repository.SmtProjectRepository;
+import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
@@ -12,6 +13,8 @@ import org.springframework.transaction.annotation.Transactional;
 @Component
 @Transactional(readOnly = true)
 public class SmtProjectManagerImpl implements SmtProjectManager {
+
+  private String SELECT_QUERY = "SELECT t FROM SmtProject t WHERE t.isActive=true";
 
   private SmtProjectRepository projectRepository;
 
@@ -24,5 +27,10 @@ public class SmtProjectManagerImpl implements SmtProjectManager {
   @Transactional
   public SmtProject create(SmtProject project) {
     return projectRepository.save(project);
+  }
+
+  @Override
+  public List<SmtProject> list(Long projectId) {
+    return projectRepository.query(SELECT_QUERY);
   }
 }

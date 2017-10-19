@@ -2,6 +2,7 @@ package com.smt.service;
 
 import com.smt.converter.SmtRequestHeaderConverter;
 import com.smt.dto.SmtRequestHeaderDto;
+import com.smt.entity.SmtRequest;
 import com.smt.entity.SmtRequestHeader;
 import com.smt.manager.SmtRequestHeaderManager;
 import java.util.List;
@@ -23,9 +24,16 @@ public class SmtRequestHeaderServiceImpl implements SmtRequestHeaderService {
   }
 
   @Override
-  public SmtRequestHeaderDto create(SmtRequestHeaderDto requestHeaderDto) {
-    SmtRequestHeader smtRequestHeader = requestHeaderManager
-        .create(requestHeaderConverter.convertToEntity(requestHeaderDto));
+  public SmtRequestHeaderDto create(SmtRequestHeaderDto requestHeaderDto, Long requestId) {
+    SmtRequestHeader smtRequestHeader = requestHeaderConverter.convertToEntity(requestHeaderDto);
+
+    SmtRequest smtRequest = new SmtRequest();
+    smtRequest.setPkid(requestId);
+    smtRequestHeader.setSmtRequest(smtRequest);
+    smtRequestHeader = requestHeaderManager.create(smtRequestHeader);
+
+//    SmtRequestHeader smtRequestHeader = requestHeaderManager.create(requestHeaderConverter.convertToEntity(requestHeaderDto));
+
     return requestHeaderConverter.convertToDto(smtRequestHeader);
   }
 

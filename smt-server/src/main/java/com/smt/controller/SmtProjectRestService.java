@@ -2,6 +2,7 @@ package com.smt.controller;
 
 import com.smt.dto.SmtProjectDto;
 import com.smt.service.SmtProjectService;
+import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -26,6 +27,12 @@ public class SmtProjectRestService {
 
   @RequestMapping(value = "/create", method = RequestMethod.POST)
   public ResponseEntity<SmtProjectDto> create(@RequestBody SmtProjectDto projectDto) {
-    return new ResponseEntity<SmtProjectDto>(projectService.create(projectDto), HttpStatus.OK);
+    return new ResponseEntity<>(projectService.create(projectDto), HttpStatus.OK);
+  }
+
+  //FIXME proje listeleme icerisine userId falan almasi gerekli bu ikisini baglamak sart oldu :))
+  @RequestMapping(value = "/list", method = RequestMethod.POST)
+  public ResponseEntity<List<SmtProjectDto>> list() {
+    return new ResponseEntity<>(projectService.list(1L), HttpStatus.OK);
   }
 }

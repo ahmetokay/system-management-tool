@@ -7,8 +7,6 @@ import com.core.tr.model.BaseDto;
  */
 public class SmtRequestNotificationDto extends BaseDto {
 
-  private Long smtRequestId;
-
   private String email;
 
   private String sms;
@@ -16,14 +14,6 @@ public class SmtRequestNotificationDto extends BaseDto {
   private Boolean restart;
 
   public SmtRequestNotificationDto() {
-  }
-
-  public Long getSmtRequestId() {
-    return smtRequestId;
-  }
-
-  public void setSmtRequestId(Long smtRequestId) {
-    this.smtRequestId = smtRequestId;
   }
 
   public String getEmail() {
