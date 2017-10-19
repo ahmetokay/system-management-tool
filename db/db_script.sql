@@ -150,6 +150,7 @@ CREATE TABLE "smt_subscription" (
 	"name" varchar(50) NOT NULL,
 	"description" varchar(150),
 	"request_size" int NOT NULL,
+	"project_size" int NOT NULL,
 	CONSTRAINT smt_subscription_pk PRIMARY KEY ("pkid")
 ) WITH (
   OIDS=FALSE
@@ -189,6 +190,11 @@ INSERT INTO "smt_request_response" values (1, true, '200');
 INSERT INTO "smt_request_response" values (2, true, '404');
 
 INSERT INTO "smt_user_role" values (1, true, 'Sistem Yoneticisi', '');
+
+INSERT INTO "smt_subscription" values (1, true, 'Ucretsiz Paket', '', 10, 5);
+INSERT INTO "smt_subscription" values (2, true, 'Gumus Paket', '', 25, 10);
+INSERT INTO "smt_subscription" values (3, true, 'Altin Paket', '', 50, 25);
+INSERT INTO "smt_subscription" values (4, true, 'Platin Paket', '', 100, 50);
 
 INSERT INTO "smt_user" values (1, true, 1, 'Ahmet', 'Okay', 'ahmet.okay@outlook.com', '123', null, null, null);
 INSERT INTO "smt_user" values (2, true, 1, 'Bilal', 'Ocal', 'bilalocal06@gmail.com', '123', null, null, null);

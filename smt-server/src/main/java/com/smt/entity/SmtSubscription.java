@@ -24,6 +24,9 @@ public class SmtSubscription extends BaseEntity {
   @Column(name = "request_size")
   private Integer requestSize;
 
+  @Column(name = "project_size")
+  private Integer projectSize;
+
   public SmtSubscription() {
   }
 
@@ -57,5 +60,13 @@ public class SmtSubscription extends BaseEntity {
 
   public void setRequestSize(Integer requestSize) {
     this.requestSize = requestSize;
+  }
+
+  public Integer getProjectSize() {
+    return projectSize;
+  }
+
+  public void setProjectSize(Integer projectSize) {
+    this.projectSize = projectSize;
   }
 }
