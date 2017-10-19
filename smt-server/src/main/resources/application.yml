@@ -16,6 +16,8 @@ spring:
     dataSourceClassName: org.apache.commons.dbcp.BasicDataSource
     driverClassName: org.postgresql.Driver
     url: jdbc:postgresql://localhost:5432/smt?currentSchema=public
+    #postgres     root
+    #smt          smt
     username: postgres
     password: root
     testWhileIdle: true
