@@ -15,7 +15,6 @@ public class NotificationManagerImpl implements NotificationManager {
     // check and send email
     String emailVal = requestNotificationDto.getEmail();
     if (emailVal != null) {
-
       String[] emailArray = emailVal.split(DELIMETER);
       for (String email : emailArray) {
         EmailUtil.send(email, "Subject", message);

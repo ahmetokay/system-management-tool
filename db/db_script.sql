@@ -201,3 +201,8 @@ INSERT INTO "smt_user" values (2, true, 1, 'Bilal', 'Ocal', 'bilalocal06@gmail.c
 
 INSERT INTO "smt_user_subscription" VALUES (1, true, 1, 1, '2017-01-01', '2020-01-01');
 INSERT INTO "smt_user_subscription" VALUES (2, true, 2, 1, '2017-01-01', '2020-01-01');
+
+INSERT INTO "smt_project" VALUES (1, true, 1, 'Test project 1', 'Test project description 1');
+INSERT INTO "smt_project" VALUES (2, true, 1, 'Test project 2', 'Test project description 2');
+INSERT INTO "smt_project" VALUES (3, true, 2, 'Test project 3', 'Test project description 3');
+INSERT INTO "smt_project" VALUES (4, true, 2, 'Test project 4', 'Test project description 4');
