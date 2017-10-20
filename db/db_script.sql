@@ -198,3 +198,6 @@ INSERT INTO "smt_subscription" values (4, true, 'Platin Paket', '', 100, 50);
 
 INSERT INTO "smt_user" values (1, true, 1, 'Ahmet', 'Okay', 'ahmet.okay@outlook.com', '123', null, null, null);
 INSERT INTO "smt_user" values (2, true, 1, 'Bilal', 'Ocal', 'bilalocal06@gmail.com', '123', null, null, null);
+
+INSERT INTO "smt_user_subscription" VALUES (1, true, 1, 1, '2017-01-01', '2020-01-01');
+INSERT INTO "smt_user_subscription" VALUES (2, true, 2, 1, '2017-01-01', '2020-01-01');
