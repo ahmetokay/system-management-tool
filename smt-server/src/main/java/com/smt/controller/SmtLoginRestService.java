@@ -1,9 +1,9 @@
 package com.smt.controller;
 
 import com.smt.dto.SmtUserDto;
-import com.smt.exception.LoginException;
+import com.smt.exception.SmtLoginException;
 import com.smt.exception.SmtException;
-import com.smt.exception.UserNotFoundException;
+import com.smt.exception.SmtUserNotFoundException;
 import com.smt.security.SmtTokenConfig;
 import com.smt.service.SmtLoginService;
 import java.util.UUID;
@@ -37,9 +37,9 @@ public class SmtLoginRestService {
       response.addCookie(new Cookie(SmtTokenConfig.TOKEN_KEY, UUID.randomUUID().toString()));
       return new ResponseEntity<>(userDto, HttpStatus.OK);
     } catch (SmtException e) {
-      if (e instanceof UserNotFoundException) {
+      if (e instanceof SmtUserNotFoundException) {
         return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
-      } else if (e instanceof LoginException) {
+      } else if (e instanceof SmtLoginException) {
         return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
       }
 

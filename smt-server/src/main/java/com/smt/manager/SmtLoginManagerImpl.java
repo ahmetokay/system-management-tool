@@ -1,9 +1,9 @@
 package com.smt.manager;
 
 import com.smt.entity.SmtUser;
-import com.smt.exception.LoginException;
+import com.smt.exception.SmtLoginException;
 import com.smt.exception.SmtException;
-import com.smt.exception.UserNotFoundException;
+import com.smt.exception.SmtUserNotFoundException;
 import com.smt.repository.SmtUserRepository;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,12 +29,12 @@ public class SmtLoginManagerImpl implements SmtLoginManager {
   public SmtUser login(String email, String password) throws SmtException {
     List<SmtUser> smtUserList = smtUserRepository.query(String.format(SELECT_QUERY, email));
     if (smtUserList.size() == 0) {
-      throw new UserNotFoundException();
+      throw new SmtUserNotFoundException();
     }
 
     List<SmtUser> userList = smtUserRepository.query(String.format(LOGIN_QUERY, email, password));
     if (userList.size() == 0) {
-      throw new LoginException();
+      throw new SmtLoginException();
     }
     return userList.get(0);
   }

@@ -2,7 +2,9 @@ package com.smt.notification;
 
 import com.smt.entity.SmtRequest;
 import com.smt.entity.SmtRequestHistory;
+import com.smt.exception.SmtException;
 import com.smt.http.SmtHttpClient;
+import com.smt.http.SmtTelnetClient;
 import com.smt.repository.SmtRequestHistoryRepository;
 import com.smt.repository.SmtRequestRepository;
 import java.sql.Timestamp;
@@ -34,18 +36,29 @@ public class RequestManagerImpl implements RequestManager {
   public void executeRequest() {
     List<SmtRequest> smtRequestList = smtRequestRepository.query(SELECT_QUERY);
     for (SmtRequest smtRequest : smtRequestList) {
+      String status = null;
+      String statusMessage = null;
       try {
+        SmtTelnetClient smtTelnetClient = new SmtTelnetClient();
+        smtTelnetClient.telnet(smtRequest);
+
         SmtHttpClient httpClient = new SmtHttpClient();
         httpClient.sendRequest(smtRequest);
 
+        status = "200";
+        statusMessage = "SUCCESS";
+      } catch (SmtException e) {
+        status = e.getMessage();
+        statusMessage = e.getMessage();
+      } catch (Exception e) {
+        logger.error(e.getMessage(), e);
+      } finally {
         SmtRequestHistory smtRequestHistory = new SmtRequestHistory();
         smtRequestHistory.setSmtRequest(smtRequest);
-        smtRequestHistory.setStatus("200");
-        smtRequestHistory.setStatusMessage("OK");
+        smtRequestHistory.setStatus(status);
+        smtRequestHistory.setStatusMessage(statusMessage);
         smtRequestHistory.setTime(new Timestamp(System.currentTimeMillis()));
         smtRequestHistoryRepository.save(smtRequestHistory);
-      } catch (Exception e) {
-        logger.error(e.getMessage());
       }
     }
   }
