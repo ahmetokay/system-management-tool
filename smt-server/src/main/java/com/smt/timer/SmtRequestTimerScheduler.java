@@ -1,6 +1,6 @@
 package com.smt.timer;
 
-import java.time.LocalDateTime;
+import com.smt.notification.RequestManager;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,17 +12,18 @@ public class SmtRequestTimerScheduler {
 
   private Logger logger = LoggerFactory.getLogger(SmtRequestTimerScheduler.class);
 
-  @Autowired
-  public SmtRequestTimerScheduler() {
+  private RequestManager requestManager;
 
+  @Autowired
+  public SmtRequestTimerScheduler(RequestManager requestManager) {
+    this.requestManager = requestManager;
   }
 
   //TODO timer gruplarina gore List<SmtRequest> alinarak ilgili request cagrilip logic islenecek
 
   @Scheduled(cron = "0 */5 * * * *")
-  public void request5Minute() {
-    logger.info("The time is now: " + LocalDateTime.now());
-
+  public void request1Minute() {
+    requestManager.executeRequest();
   }
 
 //  @Scheduled(cron = "0 */10 * * * *")

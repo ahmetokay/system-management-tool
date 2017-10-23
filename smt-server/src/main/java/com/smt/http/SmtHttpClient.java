@@ -23,7 +23,7 @@ import org.apache.http.impl.client.HttpClientBuilder;
  */
 public class SmtHttpClient {
 
-  private Pair<Integer, String> sendRequest(SmtRequest smtRequest) {
+  public Pair<Integer, String> sendRequest(SmtRequest smtRequest) {
     Pair<Integer, String> responseInfo = null;
     HttpClient client = HttpClientBuilder.create().build();
     HttpRequestBase httpRequestBase = prepareRequest(smtRequest);
@@ -60,7 +60,7 @@ public class SmtHttpClient {
         return new HttpDelete();
       case PUT:
       case POST:
-        HttpPost httpPost = new HttpPost();
+        HttpPost httpPost = new HttpPost(smtRequest.getUrl());
         httpPost.setEntity(new ByteArrayEntity(smtRequest.getBody().getBytes()));
         return httpPost;
       default:
