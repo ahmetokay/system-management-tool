@@ -13,7 +13,9 @@ import org.apache.http.client.ClientProtocolException;
 import org.apache.http.client.HttpClient;
 import org.apache.http.client.methods.CloseableHttpResponse;
 import org.apache.http.client.methods.HttpDelete;
+import org.apache.http.client.methods.HttpGet;
 import org.apache.http.client.methods.HttpPost;
+import org.apache.http.client.methods.HttpPut;
 import org.apache.http.client.methods.HttpRequestBase;
 import org.apache.http.entity.ByteArrayEntity;
 import org.apache.http.impl.client.HttpClientBuilder;
@@ -56,9 +58,11 @@ public class SmtHttpClient {
         .valueOf(smtRequest.getSmtRequestType().getName());
     switch (httpRequestType) {
       case GET:
+        return new HttpGet(smtRequest.getUrl());
       case DELETE:
-        return new HttpDelete();
+        return new HttpDelete(smtRequest.getUrl());
       case PUT:
+        return new HttpPut(smtRequest.getUrl());
       case POST:
         HttpPost httpPost = new HttpPost(smtRequest.getUrl());
         httpPost.setEntity(new ByteArrayEntity(smtRequest.getBody().getBytes()));
