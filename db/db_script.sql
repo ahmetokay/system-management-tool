@@ -69,7 +69,7 @@ CREATE TABLE "smt_request" (
 	"fk_smt_project_id" bigint NOT NULL,
 	"fk_smt_request_type_id" bigint NOT NULL,
 	"url" varchar NOT NULL,
-	"body" TEXT,
+	"body" TEXT NOT NULL,
 	"refresh_time" int NOT NULL,
 	"try_count" int NOT NULL,
 	CONSTRAINT smt_request_pk PRIMARY KEY ("pkid")
@@ -206,3 +206,16 @@ INSERT INTO "smt_project" VALUES (1, true, 1, 'Test project 1', 'Test project de
 INSERT INTO "smt_project" VALUES (2, true, 1, 'Test project 2', 'Test project description 2');
 INSERT INTO "smt_project" VALUES (3, true, 2, 'Test project 3', 'Test project description 3');
 INSERT INTO "smt_project" VALUES (4, true, 2, 'Test project 4', 'Test project description 4');
+
+INSERT INTO "smt_request" VALUES (1, true, 1, 2, 'http://www.google.com', '', 10000, 10);
+INSERT INTO "smt_request" VALUES (2, true, 1, 2, 'https://www.turkiye.gov.tr/', '', 10000, 10);
+INSERT INTO "smt_request" VALUES (3, true, 1, 2, 'http://www.hepsiburada.com/', '', 10000, 10);
+INSERT INTO "smt_request" VALUES (4, true, 2, 2, 'https://www.genesis-mining.com/login-panel', '', 10000, 10);
+INSERT INTO "smt_request" VALUES (5, true, 2, 2, 'https://www.youtube.com/', '', 10000, 10);
+INSERT INTO "smt_request" VALUES (6, true, 2, 2, 'https://www.primefaces.org/showcase/ui/chart/pie.xhtml', '', 10000, 10);
+INSERT INTO "smt_request" VALUES (7, true, 3, 2, 'http://www.milliyet.com.tr/Skorer-Tv/video-izle/ahmet-cakar-senol-gunes-ben-nasil-bir-hata-yaptim-demistir--M0oQQxUlqPFD.html', '', 10000, 10);
+INSERT INTO "smt_request" VALUES (8, true, 3, 2, 'http://www.hepsiburada.com/gunun-firsati-teklifi', '', 10000, 10);
+INSERT INTO "smt_request" VALUES (9, true, 3, 2, 'http://localhost:8080/ronin-2.0/documentation.xhtml', '', 10000, 10);
+INSERT INTO "smt_request" VALUES (10, true, 4, 2, 'https://stackoverflow.com/questions/11506321/how-to-ping-an-ip-address', '', 10000, 10);
+INSERT INTO "smt_request" VALUES (11, true, 4, 2, 'https://gist.github.com/madan712/4509039', '', 10000, 10);
+INSERT INTO "smt_request" VALUES (12, true, 4, 2, 'http://www.milliyet.com.tr/Skorer-Tv/', '', 10000, 10);

@@ -28,6 +28,8 @@ public class SmtTelnetClient {
         try {
           telnetClient.connect(address.getHostAddress(), port);
           telnetClient.disconnect();
+
+          logger.info("Telnet to " + smtRequest.getUrl() + " was success");
         } catch (ConnectException ce) {
           throw new SmtConnectException("Could not connect to server");
         } catch (UnknownHostException e) {

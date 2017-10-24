@@ -30,16 +30,16 @@ public class TokenRestFilter extends GenericFilterBean {
   @Override
   public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain)
       throws IOException, ServletException {
-    Cookie tokenCookie = WebUtils.getCookie((HttpServletRequest) request, SmtTokenConfig.TOKEN_KEY);
-    if (tokenCookie == null) {
-      if (((HttpServletRequest) request).getServletPath().equals("/smt_login/login")) {
-        chain.doFilter(request, response);
-      }
-      ((HttpServletResponse) response).sendError(HttpServletResponse.SC_UNAUTHORIZED);
-    } else {
-      chain.doFilter(request, response);
-    }
+//    Cookie tokenCookie = WebUtils.getCookie((HttpServletRequest) request, SmtTokenConfig.TOKEN_KEY);
+//    if (tokenCookie == null) {
+//      if (((HttpServletRequest) request).getServletPath().equals("/smt_login/login")) {
+//        chain.doFilter(request, response);
+//      }
+//      ((HttpServletResponse) response).sendError(HttpServletResponse.SC_UNAUTHORIZED);
+//    } else {
+//      chain.doFilter(request, response);
+//    }
 
-    //chain.doFilter(request, response);
+    chain.doFilter(request, response);
   }
 }

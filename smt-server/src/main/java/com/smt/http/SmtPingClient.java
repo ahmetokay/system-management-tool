@@ -18,13 +18,12 @@ public class SmtPingClient {
     try {
       URL url = new URL(smtRequest.getUrl());
       HttpURLConnection urlConn = (HttpURLConnection) url.openConnection();
-      urlConn.setConnectTimeout(1000 * 10); // mTimeout is in seconds
-      long startTime = System.currentTimeMillis();
+      urlConn.setConnectTimeout(1000 * 2); // mTimeout is in seconds
       urlConn.connect();
-      long endTime = System.currentTimeMillis();
       if (urlConn.getResponseCode() == HttpURLConnection.HTTP_OK) {
-        logger.info("Time (ms) : " + (endTime - startTime));
         logger.info("Ping to " + smtRequest.getUrl() + " was success");
+      } else {
+        throw new SmtPingException();
       }
     } catch (MalformedURLException e1) {
       throw new SmtPingException("MalformedURLException");
