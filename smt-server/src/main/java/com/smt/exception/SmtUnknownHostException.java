@@ -9,7 +9,7 @@ public class SmtUnknownHostException extends SmtException {
     super(message);
   }
 
-  public SmtUnknownHostException(String message, Throwable cause) {
-    super(message, cause);
+  public SmtUnknownHostException(String message, int code) {
+    super(message, code);
   }
 }

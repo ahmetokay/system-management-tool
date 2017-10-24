@@ -21,7 +21,7 @@ public class SmtRequestHistory extends BaseEntity {
   private Timestamp time;
 
   @Column(name = "status")
-  private String status;
+  private Integer status;
 
   @Column(name = "status_message")
   private String statusMessage;
@@ -45,11 +45,11 @@ public class SmtRequestHistory extends BaseEntity {
     this.time = time;
   }
 
-  public String getStatus() {
+  public Integer getStatus() {
     return status;
   }
 
-  public void setStatus(String status) {
+  public void setStatus(Integer status) {
     this.status = status;
   }
 

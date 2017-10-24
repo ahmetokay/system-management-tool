@@ -36,8 +36,8 @@ public class RequestManagerImpl implements RequestManager {
   public void executeRequest() {
     List<SmtRequest> smtRequestList = smtRequestRepository.query(SELECT_QUERY);
     for (SmtRequest smtRequest : smtRequestList) {
-      String status = null;
-      String statusMessage = null;
+      int statusCode = 200;
+      String statusMessage = "SUCCESS";
       try {
         SmtTelnetClient smtTelnetClient = new SmtTelnetClient();
         smtTelnetClient.telnet(smtRequest);
@@ -47,18 +47,15 @@ public class RequestManagerImpl implements RequestManager {
 
 //        SmtHttpClient httpClient = new SmtHttpClient();
 //        httpClient.sendRequest(smtRequest);
-
-        status = "200";
-        statusMessage = "SUCCESS";
       } catch (SmtException e) {
-        status = e.getMessage();
+        statusCode = e.getCode();
         statusMessage = e.getMessage();
       } catch (Exception e) {
         logger.error(e.getMessage(), e);
       } finally {
         SmtRequestHistory smtRequestHistory = new SmtRequestHistory();
         smtRequestHistory.setSmtRequest(smtRequest);
-        smtRequestHistory.setStatus(status);
+        smtRequestHistory.setStatus(statusCode);
         smtRequestHistory.setStatusMessage(statusMessage);
         smtRequestHistory.setTime(new Timestamp(System.currentTimeMillis()));
         smtRequestHistoryRepository.save(smtRequestHistory);

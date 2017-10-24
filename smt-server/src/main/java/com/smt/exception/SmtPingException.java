@@ -9,7 +9,7 @@ public class SmtPingException extends SmtException {
     super(message);
   }
 
-  public SmtPingException(String message, Throwable cause) {
-    super(message, cause);
+  public SmtPingException(String message, int code) {
+    super(message, code);
   }
 }

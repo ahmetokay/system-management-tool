@@ -2,6 +2,8 @@ package com.smt.exception;
 
 public class SmtException extends Exception {
 
+  private int code;
+
   public SmtException() {
   }
 
@@ -9,7 +11,12 @@ public class SmtException extends Exception {
     super(message);
   }
 
-  public SmtException(String message, Throwable cause) {
-    super(message, cause);
+  public SmtException(String message, int code) {
+    super(message);
+    this.code = code;
+  }
+
+  public int getCode() {
+    return code;
   }
 }

@@ -91,7 +91,7 @@ CREATE TABLE "smt_request_history" (
 	"pkid" serial NOT NULL,
 	"isactive" BOOLEAN NOT NULL,
 	"fk_smt_request_id" bigint NOT NULL,
-	"status" varchar(10) NOT NULL,
+	"status" INTEGER NOT NULL,
 	"status_message" varchar(255) NOT NULL,
 	"time" TIMESTAMP NOT NULL,
 	CONSTRAINT smt_request_history_pk PRIMARY KEY ("pkid")

@@ -9,7 +9,7 @@ public class SmtConnectException extends SmtException {
     super(message);
   }
 
-  public SmtConnectException(String message, Throwable cause) {
-    super(message, cause);
+  public SmtConnectException(String message, int code) {
+    super(message, code);
   }
 }

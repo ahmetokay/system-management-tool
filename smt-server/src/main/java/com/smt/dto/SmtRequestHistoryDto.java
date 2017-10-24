@@ -10,7 +10,7 @@ public class SmtRequestHistoryDto extends BaseDto {
 
   private Timestamp time;
 
-  private String status;
+  private Integer status;
 
   private String statusMessage;
 
@@ -25,11 +25,11 @@ public class SmtRequestHistoryDto extends BaseDto {
     this.time = time;
   }
 
-  public String getStatus() {
+  public Integer getStatus() {
     return status;
   }
 
-  public void setStatus(String status) {
+  public void setStatus(Integer status) {
     this.status = status;
   }
 

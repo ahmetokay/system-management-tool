@@ -7,6 +7,7 @@ import com.smt.exception.SmtUnknownHostException;
 import com.smt.util.UrlUtil;
 import java.io.IOException;
 import java.net.ConnectException;
+import java.net.HttpURLConnection;
 import java.net.InetAddress;
 import java.net.UnknownHostException;
 import org.apache.commons.net.telnet.TelnetClient;
@@ -31,11 +32,12 @@ public class SmtTelnetClient {
 
           logger.info("Telnet to " + smtRequest.getUrl() + " was success");
         } catch (ConnectException ce) {
-          throw new SmtConnectException("Could not connect to server");
+          throw new SmtConnectException("Could not connect to server",
+              HttpURLConnection.HTTP_NOT_FOUND);
         } catch (UnknownHostException e) {
-          throw new SmtUnknownHostException("Unknown host");
+          throw new SmtUnknownHostException("Unknown host", HttpURLConnection.HTTP_NOT_FOUND);
         } catch (IOException e) {
-          throw new SmtException("Error connecting to server");
+          throw new SmtException("Error connecting to server", HttpURLConnection.HTTP_NOT_FOUND);
         }
       }
     } catch (UnknownHostException e) {

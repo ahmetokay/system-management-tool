@@ -23,12 +23,12 @@ public class SmtPingClient {
       if (urlConn.getResponseCode() == HttpURLConnection.HTTP_OK) {
         logger.info("Ping to " + smtRequest.getUrl() + " was success");
       } else {
-        throw new SmtPingException();
+        throw new SmtPingException("Ping error", HttpURLConnection.HTTP_NOT_FOUND);
       }
     } catch (MalformedURLException e1) {
-      throw new SmtPingException("MalformedURLException");
+      throw new SmtPingException("MalformedURLException", HttpURLConnection.HTTP_NOT_FOUND);
     } catch (IOException e) {
-      throw new SmtPingException("IOException");
+      throw new SmtPingException("IOException", HttpURLConnection.HTTP_NOT_FOUND);
     }
   }
 }
