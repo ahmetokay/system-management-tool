@@ -4,6 +4,7 @@ import com.smt.entity.SmtRequest;
 import com.smt.exception.SmtConnectException;
 import com.smt.exception.SmtException;
 import com.smt.exception.SmtUnknownHostException;
+import com.smt.util.UrlUtil;
 import java.io.IOException;
 import java.net.ConnectException;
 import java.net.InetAddress;
@@ -18,11 +19,14 @@ public class SmtTelnetClient {
 
   public void telnet(SmtRequest smtRequest) throws SmtException {
     try {
-      InetAddress address = InetAddress.getByName(smtRequest.getUrl());
+      String url = UrlUtil.extractHost(smtRequest.getUrl());
+      int port = UrlUtil.extractPort(smtRequest.getUrl());
+
+      InetAddress address = InetAddress.getByName(url);
       if (address != null) {
         TelnetClient telnetClient = new TelnetClient();
         try {
-          telnetClient.connect(address.getHostAddress(), 80);
+          telnetClient.connect(address.getHostAddress(), port);
           telnetClient.disconnect();
         } catch (ConnectException ce) {
           throw new SmtConnectException("Could not connect to server");
