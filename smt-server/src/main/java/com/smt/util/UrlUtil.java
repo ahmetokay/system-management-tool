@@ -11,18 +11,12 @@ public class UrlUtil {
 
   public static String extractHost(String url) {
     URI uri = createURI(url);
-    if (uri == null) {
-      return null;
-    }
     String domain = uri.getHost();
     return domain.startsWith("www.") ? domain.substring(4) : domain;
   }
 
   public static int extractPort(String url) {
     URI uri = createURI(url);
-    if (uri == null) {
-      return -1;
-    }
 
     if (uri.getPort() == -1) {
       return 80;

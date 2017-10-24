@@ -3,7 +3,7 @@ package com.smt.notification;
 import com.smt.entity.SmtRequest;
 import com.smt.entity.SmtRequestHistory;
 import com.smt.exception.SmtException;
-import com.smt.http.SmtHttpClient;
+import com.smt.http.SmtPingClient;
 import com.smt.http.SmtTelnetClient;
 import com.smt.repository.SmtRequestHistoryRepository;
 import com.smt.repository.SmtRequestRepository;
@@ -42,8 +42,11 @@ public class RequestManagerImpl implements RequestManager {
         SmtTelnetClient smtTelnetClient = new SmtTelnetClient();
         smtTelnetClient.telnet(smtRequest);
 
-        SmtHttpClient httpClient = new SmtHttpClient();
-        httpClient.sendRequest(smtRequest);
+        SmtPingClient smtPingClient = new SmtPingClient();
+        smtPingClient.ping(smtRequest);
+
+//        SmtHttpClient httpClient = new SmtHttpClient();
+//        httpClient.sendRequest(smtRequest);
 
         status = "200";
         statusMessage = "SUCCESS";
