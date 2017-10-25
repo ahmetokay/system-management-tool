@@ -21,7 +21,7 @@ public class SmtRequestTimerScheduler {
 
   //TODO timer gruplarina gore List<SmtRequest> alinarak ilgili request cagrilip logic islenecek
 
-  @Scheduled(cron = "0 */1 * * * *")
+  @Scheduled(cron = "0 */10 * * * *")
   public void request1Minute() {
     requestManager.executeRequest();
   }
