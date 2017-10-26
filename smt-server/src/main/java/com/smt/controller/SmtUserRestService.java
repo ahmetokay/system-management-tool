@@ -1,6 +1,7 @@
 package com.smt.controller;
 
 import com.smt.dto.SmtUserDto;
+import com.smt.exception.SmtException;
 import com.smt.service.SmtUserService;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,7 +25,11 @@ public class SmtUserRestService {
 
   @RequestMapping(value = "/create", method = RequestMethod.POST)
   public ResponseEntity<SmtUserDto> create(@RequestBody SmtUserDto userDto) {
-    return new ResponseEntity<>(smtUserService.create(userDto), HttpStatus.OK);
+    try {
+      return new ResponseEntity<>(smtUserService.create(userDto), HttpStatus.OK);
+    } catch (SmtException e) {
+      return new ResponseEntity<>(HttpStatus.CONFLICT);
+    }
   }
 
   @RequestMapping(value = "/list", method = RequestMethod.POST)

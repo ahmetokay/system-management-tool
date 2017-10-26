@@ -19,7 +19,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping(value = "/smt_login")
 public class SmtLoginRestService {
 
   private SmtLoginService smtLoginService;
@@ -30,7 +29,7 @@ public class SmtLoginRestService {
   }
 
   //TODO set token as cookie
-  @RequestMapping(value = "/login", method = RequestMethod.POST)
+  @RequestMapping(value = "/smt_login", method = RequestMethod.POST)
   public ResponseEntity<SmtUserDto> create(@RequestParam("email") String email,
       @RequestParam("password") String password, HttpServletResponse response) {
     try {

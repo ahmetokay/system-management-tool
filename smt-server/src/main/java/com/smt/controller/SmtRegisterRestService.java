@@ -2,6 +2,7 @@ package com.smt.controller;
 
 import com.smt.dto.SmtUserDto;
 import com.smt.dto.SmtUserRoleDto;
+import com.smt.exception.SmtException;
 import com.smt.service.SmtUserService;
 import org.apache.commons.codec.digest.DigestUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,7 +14,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping(value = "/smt_register")
 public class SmtRegisterRestService {
 
   private SmtUserService smtUserService;
@@ -23,11 +23,10 @@ public class SmtRegisterRestService {
     this.smtUserService = smtUserService;
   }
 
-  @RequestMapping(value = "/register", method = RequestMethod.POST)
+  @RequestMapping(value = "/smt_register", method = RequestMethod.POST)
   public ResponseEntity<SmtUserDto> create(@RequestParam("email") String email,
       @RequestParam("password") String password) {
     SmtUserDto smtUserDto = new SmtUserDto();
-    smtUserDto.setPkid(null);
     smtUserDto.setIsactive(true);
     smtUserDto.setEmail(email);
     smtUserDto.setPassword(DigestUtils.sha256Hex(password));
@@ -37,6 +36,11 @@ public class SmtRegisterRestService {
     smtUserRoleDto.setPkid(1L);
     smtUserDto.setSmtUserRole(smtUserRoleDto);
 
-    return new ResponseEntity<>(smtUserService.create(smtUserDto), HttpStatus.OK);
+    try {
+      smtUserDto = smtUserService.create(smtUserDto);
+      return new ResponseEntity<>(smtUserDto, HttpStatus.OK);
+    } catch (SmtException e) {
+      return new ResponseEntity<>(HttpStatus.CONFLICT);
+    }
   }
 }

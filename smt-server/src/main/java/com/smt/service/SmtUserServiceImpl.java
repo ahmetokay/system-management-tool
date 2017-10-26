@@ -3,6 +3,7 @@ package com.smt.service;
 import com.smt.converter.SmtUserConverter;
 import com.smt.dto.SmtUserDto;
 import com.smt.entity.SmtUser;
+import com.smt.exception.SmtException;
 import com.smt.manager.SmtUserManager;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,7 +23,7 @@ public class SmtUserServiceImpl implements SmtUserService {
   }
 
   @Override
-  public SmtUserDto create(SmtUserDto userDto) {
+  public SmtUserDto create(SmtUserDto userDto) throws SmtException {
     SmtUser smtUser = smtUserManager.create(smtUserConverter.convertToEntity(userDto));
     return smtUserConverter.convertToDto(smtUser);
   }
