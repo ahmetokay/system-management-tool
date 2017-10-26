@@ -30,10 +30,10 @@ CREATE TABLE "smt_user" (
 	"pkid" serial NOT NULL,
 	"isactive" BOOLEAN NOT NULL,
 	"fk_smt_user_role_id" bigint NOT NULL,
-	"name" varchar(50) NOT NULL,
-	"surname" varchar(50) NOT NULL,
+	"name" varchar(50),
+	"surname" varchar(50),
 	"email" varchar(200) NOT NULL,
-	"password" varchar(20) NOT NULL,
+	"password" varchar(64) NOT NULL,
 	"address" varchar(200),
 	"city" varchar(200),
 	"country" varchar(100),
@@ -169,6 +169,7 @@ CREATE TABLE "smt_user_subscription" (
 );
 
 ALTER TABLE "smt_user" ADD CONSTRAINT "smt_user_fk_1" FOREIGN KEY ("fk_smt_user_role_id") REFERENCES "smt_user_role"("pkid");
+ALTER TABLE "smt_user" ADD UNIQUE ("email");
 ALTER TABLE "smt_project" ADD CONSTRAINT "smt_project_fk_1" FOREIGN KEY ("fk_smt_user_id") REFERENCES "smt_user"("pkid");
 ALTER TABLE "smt_request" ADD CONSTRAINT "smt_request_fk_1" FOREIGN KEY ("fk_smt_project_id") REFERENCES "smt_project"("pkid");
 ALTER TABLE "smt_request" ADD CONSTRAINT "smt_request_fk_2" FOREIGN KEY ("fk_smt_request_type_id") REFERENCES "smt_request_type"("pkid");
@@ -190,14 +191,15 @@ INSERT INTO "smt_request_response" values (1, true, '200');
 INSERT INTO "smt_request_response" values (2, true, '404');
 
 INSERT INTO "smt_user_role" values (1, true, 'Sistem Yoneticisi', '');
+INSERT INTO "smt_user_role" values (2, true, 'Kullanici', '');
 
 INSERT INTO "smt_subscription" values (1, true, 'Ucretsiz Paket', '', 10, 5);
 INSERT INTO "smt_subscription" values (2, true, 'Gumus Paket', '', 25, 10);
 INSERT INTO "smt_subscription" values (3, true, 'Altin Paket', '', 50, 25);
 INSERT INTO "smt_subscription" values (4, true, 'Platin Paket', '', 100, 50);
 
-INSERT INTO "smt_user" values (1, true, 1, 'Ahmet', 'Okay', 'ahmet.okay@outlook.com', '123', null, null, null);
-INSERT INTO "smt_user" values (2, true, 1, 'Bilal', 'Ocal', 'bilalocal06@gmail.com', '123', null, null, null);
+INSERT INTO "smt_user" values (1, true, 1, 'Ahmet', 'Okay', 'ahmet.okay@outlook.com', 'a665a45920422f9d417e4867efdc4fb8a04a1f3fff1fa07e998e86f7f7a27ae3', null, null, null);
+INSERT INTO "smt_user" values (2, true, 1, 'Bilal', 'Ocal', 'bilalocal06@gmail.com', 'a665a45920422f9d417e4867efdc4fb8a04a1f3fff1fa07e998e86f7f7a27ae3', null, null, null);
 
 INSERT INTO "smt_user_subscription" VALUES (1, true, 1, 1, '2017-01-01', '2020-01-01');
 INSERT INTO "smt_user_subscription" VALUES (2, true, 2, 1, '2017-01-01', '2020-01-01');

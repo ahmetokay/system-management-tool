@@ -36,7 +36,6 @@ public class SmtUserConverter extends BaseAbstractConverter<SmtUserDto, SmtUser>
     dto.setName(entity.getName());
     dto.setSurname(entity.getSurname());
     dto.setEmail(entity.getEmail());
-    dto.setPassword(entity.getPassword());
     dto.setAddress(entity.getAddress());
     dto.setCity(entity.getCity());
     dto.setCountry(entity.getCountry());
