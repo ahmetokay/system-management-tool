@@ -1,6 +1,6 @@
 package com.smt.config;
 
-public class SmtTokenConfig {
+public class SmtTokenConstants {
 
   public static final String TOKEN_KEY = "smt-token";
 }

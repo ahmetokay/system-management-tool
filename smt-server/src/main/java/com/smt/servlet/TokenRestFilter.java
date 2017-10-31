@@ -1,6 +1,7 @@
-package com.smt.security;
+package com.smt.servlet;
 
-import com.smt.config.SmtTokenConfig;
+import com.smt.config.SmtTokenConstants;
+import com.smt.security.TokenManager;
 import java.io.IOException;
 import javax.servlet.FilterChain;
 import javax.servlet.ServletException;
@@ -37,7 +38,7 @@ public class TokenRestFilter extends GenericFilterBean {
       return;
     }
 
-    Cookie tokenCookie = WebUtils.getCookie((HttpServletRequest) request, SmtTokenConfig.TOKEN_KEY);
+    Cookie tokenCookie = WebUtils.getCookie((HttpServletRequest) request, SmtTokenConstants.TOKEN_KEY);
     if (tokenCookie == null) {
       ((HttpServletResponse) response).sendError(HttpServletResponse.SC_UNAUTHORIZED);
     } else {

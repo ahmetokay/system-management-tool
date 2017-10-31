@@ -4,7 +4,7 @@ import com.smt.dto.SmtUserDto;
 import com.smt.exception.SmtException;
 import com.smt.exception.SmtLoginException;
 import com.smt.exception.SmtUserNotFoundException;
-import com.smt.config.SmtTokenConfig;
+import com.smt.config.SmtTokenConstants;
 import com.smt.security.TokenManager;
 import com.smt.service.SmtLoginService;
 import java.util.UUID;
@@ -45,7 +45,7 @@ public class SmtLoginRestService {
       tokenManager.put(token, userDto);
 
       // add token as cookie
-      response.addCookie(new Cookie(SmtTokenConfig.TOKEN_KEY, token));
+      response.addCookie(new Cookie(SmtTokenConstants.TOKEN_KEY, token));
       return new ResponseEntity<>(userDto, HttpStatus.OK);
     } catch (SmtException e) {
       if (e instanceof SmtUserNotFoundException) {
