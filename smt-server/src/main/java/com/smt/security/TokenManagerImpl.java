@@ -14,7 +14,7 @@ public class TokenManagerImpl implements TokenManager {
 
   private Logger logger = LoggerFactory.getLogger(TokenManagerImpl.class);
 
-  private final int CACHE_DURATION = 1000 * 60;
+  private final int CACHE_DURATION = 60 * 60; // 1 hour
 
   private CacheConfiguration cacheConfiguration;
 
