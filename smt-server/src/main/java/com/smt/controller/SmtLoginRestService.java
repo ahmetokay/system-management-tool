@@ -5,6 +5,7 @@ import com.smt.exception.SmtException;
 import com.smt.exception.SmtLoginException;
 import com.smt.exception.SmtUserNotFoundException;
 import com.smt.security.SmtTokenConfig;
+import com.smt.security.TokenManager;
 import com.smt.service.SmtLoginService;
 import java.util.UUID;
 import javax.servlet.http.Cookie;
@@ -23,9 +24,12 @@ public class SmtLoginRestService {
 
   private SmtLoginService smtLoginService;
 
+  private TokenManager tokenManager;
+
   @Autowired
-  public SmtLoginRestService(SmtLoginService smtLoginService) {
+  public SmtLoginRestService(SmtLoginService smtLoginService, TokenManager tokenManager) {
     this.smtLoginService = smtLoginService;
+    this.tokenManager = tokenManager;
   }
 
   //TODO set token as cookie
@@ -35,7 +39,13 @@ public class SmtLoginRestService {
     try {
       String digestPassword = DigestUtils.sha256Hex(password);
       SmtUserDto userDto = smtLoginService.login(email, digestPassword);
-      response.addCookie(new Cookie(SmtTokenConfig.TOKEN_KEY, UUID.randomUUID().toString()));
+      String token = UUID.randomUUID().toString();
+
+      // add token to cache system
+      tokenManager.put(token, userDto);
+
+      // add token as cookie
+      response.addCookie(new Cookie(SmtTokenConfig.TOKEN_KEY, token));
       return new ResponseEntity<>(userDto, HttpStatus.OK);
     } catch (SmtException e) {
       if (e instanceof SmtUserNotFoundException) {

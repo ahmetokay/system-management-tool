@@ -8,6 +8,10 @@ logging:
     org.springframework.boot: INFO
     org.springframework.transaction: INFO
 
+cache:
+  host: localhost
+  port: 11211
+
 spring:
   batch:
     initializer:

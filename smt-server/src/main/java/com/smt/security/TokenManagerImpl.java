@@ -1,50 +1,58 @@
 package com.smt.security;
 
+import com.smt.config.CacheConfiguration;
 import com.smt.dto.SmtUserDto;
-import java.util.ArrayList;
-import java.util.List;
+import java.io.IOException;
+import java.net.InetSocketAddress;
+import net.spy.memcached.MemcachedClient;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
 
 @Component
 public class TokenManagerImpl implements TokenManager {
 
-  //TODO burada tutulan veri yapisi degisecek. Token belirli bir sure durduktan sonra silinmesi gerekiyor.
-  private List<String> tokenList;
+  private Logger logger = LoggerFactory.getLogger(TokenManagerImpl.class);
 
-  public TokenManagerImpl() {
-    this.tokenList = new ArrayList<>();
+  private final int CACHE_DURATION = 1000 * 60;
+
+  private CacheConfiguration cacheConfiguration;
+
+  private MemcachedClient client;
+
+  public TokenManagerImpl(CacheConfiguration cacheConfiguration) {
+    this.cacheConfiguration = cacheConfiguration;
   }
 
   @Override
   public boolean check(String token) {
-    return tokenList.contains(token);
+    if (client == null) {
+      fillClientObject();
+    }
+
+    return client.get(token) != null ? true : false;
   }
 
   @Override
   public void update(String token) {
-    tokenList.add(token);
+
   }
 
   @Override
   public void put(String token, SmtUserDto userDto) {
-    tokenList.add(token);
+    if (client == null) {
+      fillClientObject();
+    }
+    client.set(token, CACHE_DURATION, userDto);
+  }
 
-//    cacheManager.setCacheNames();
-//    cacheManager.setCacheNames(Arrays.asList());
-//
-//
-//    cacheManager = new ConcurrentMapCacheManager() {
-//
-//      @Override
-//      protected Cache createConcurrentMapCache(final String name) {
-//        return new ConcurrentMapCache(name,
-//            CacheBuilder.newBuilder().expireAfterWrite(30, TimeUnit.MINUTES).maximumSize(100)
-//                .build().asMap(), false);
-//      }
-//    };
-//
-//    cacheManager.
-//
-//        tokenMap.put(token, userDto);
+  private void fillClientObject() {
+    try {
+      String host = cacheConfiguration.getHost();
+      int port = cacheConfiguration.getPort();
+      client = new MemcachedClient(new InetSocketAddress(host, port));
+    } catch (IOException e) {
+      logger.error(e.getMessage(), e);
+    }
   }
 }
