@@ -1,5 +1,6 @@
 package com.smt.security;
 
+import com.smt.config.SmtTokenConfig;
 import java.io.IOException;
 import javax.servlet.FilterChain;
 import javax.servlet.ServletException;

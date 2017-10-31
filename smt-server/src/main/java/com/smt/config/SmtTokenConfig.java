@@ -1,4 +1,4 @@
-package com.smt.security;
+package com.smt.config;
 
 public class SmtTokenConfig {
 

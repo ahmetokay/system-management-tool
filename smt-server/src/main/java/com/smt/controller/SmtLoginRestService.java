@@ -4,7 +4,7 @@ import com.smt.dto.SmtUserDto;
 import com.smt.exception.SmtException;
 import com.smt.exception.SmtLoginException;
 import com.smt.exception.SmtUserNotFoundException;
-import com.smt.security.SmtTokenConfig;
+import com.smt.config.SmtTokenConfig;
 import com.smt.security.TokenManager;
 import com.smt.service.SmtLoginService;
 import java.util.UUID;
